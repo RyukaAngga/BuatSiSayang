@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Happy Birthday Sayang</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Italianno&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Container Scrapbook Mobile-First -->
+  <main class="scrapbook-container" id="scrapbookApp">
+    
+    <!-- ==================== SECTION 1: HERO SECTION ==================== -->
+    <section class="section hero-section" id="hero">
+      
+      <!-- Bunga Kiri Atas Berputar 360 Derajat Halus -->
+      <div class="sticker sticker-flower-tl flower-spin" aria-hidden="true">
+        <img src="assets/stickers/hibiscus.png" alt="" loading="eager">
+      </div>
+
+      <!-- Koran Kanan Atas: newspaper-2.png sesuai instruksi -->
+      <div class="sticker sticker-newspaper-tr" aria-hidden="true">
+        <img src="assets/stickers/newspaper-2.png" alt="" loading="eager">
+      </div>
+
+      <!-- Koran Kiri Bawah -->
+      <div class="sticker sticker-newspaper-bl" aria-hidden="true">
+        <img src="assets/stickers/newspaper.png" alt="" loading="eager">
+      </div>
+
+      <!-- Bunga Kanan Bawah Berputar 360 Derajat Halus -->
+      <div class="sticker sticker-flower-br flower-spin-reverse" aria-hidden="true">
+        <img src="assets/stickers/hibiscus.png" alt="" loading="eager">
+      </div>
+
+      <!-- Teks & Badges Hero -->
+      <div class="badge badge-birthday">
+        <span>Happy Birthday!</span>
+        <span class="badge-hearts">💕</span>
+      </div>
+
+      <div class="badge-group-right">
+        <div class="badge badge-pretty">
+          <span>God you're so pretty.</span>
+        </div>
+        <div class="text-script-cursive">
+          love u forever
+        </div>
+      </div>
+
+      <!-- Elemen Amplop Interaktif (envelope-2.png sudah menyatu dengan tangan) -->
+      <div class="envelope-wrapper" id="envelopeWrapper">
+        <a href="surprise.html" class="envelope-btn" id="envelopeBtn" aria-label="Buka amplop kejutan">
+          <img src="assets/stickers/envelope-2.png" alt="Amplop Surat Cinta" class="envelope-img">
+        </a>
+        <p class="click-hint">klik envelope</p>
+      </div>
+
+    </section>
+
+    <!-- Pembatas Robekan Kertas Putih (white-ripped.png) Antara Section 1 dan Section 2 -->
+    <div class="section-divider divider-s1-s2" aria-hidden="true">
+      <img src="assets/stickers/white-ripped.png" alt="" class="divider-ripped-img">
+    </div>
+
+    <!-- ==================== SECTION 2: MUSIC & MEMORIES ==================== -->
+    <section class="section music-section" id="music">
+      
+      <!-- Kontainer Papan Scrapbook Utama -->
+      <div class="music-board-wrapper">
+        
+        <!-- White Paper (white-paper.webp) di Atas Gingham Sesuai Arahan User -->
+        <div class="section-2-white-paper-bg" aria-hidden="true">
+          <img src="assets/backgrounds/white-paper.webp" alt="White Paper Background" class="white-paper-img">
+        </div>
+
+        <!-- Alas Kertas Asli Section 2: paper-sec2.png (Full Aset Asli Scrapbook, Ukuran Terkunci Proporsional) -->
+        <div class="section-2-paper-sec2" aria-hidden="true">
+          <img src="assets/stickers/paper-sec2.png" alt="Paper Section 2" class="paper-sec2-img">
+        </div>
+
+        <!-- Bunga Pink di Pojok Kiri Atas Papan (Persis Sesuai Gambar Referensi) -->
+        <div class="sticker music-flower-tl" aria-hidden="true">
+          <img src="assets/stickers/pink-flowers.png" alt="Bunga Pink">
+        </div>
+
+        <!-- Bunga Pink di Pojok Kanan Bawah Papan (Persis Sesuai Gambar Referensi) -->
+        <div class="sticker music-flower-br" aria-hidden="true">
+          <img src="assets/stickers/pink-flowers.png" alt="Bunga Pink">
+        </div>
+
+        <!-- Konten di Atas Kertas Putih -->
+        <div class="music-board-content">
+          
+          <!-- Sisi Kiri: Filmstrip 4 Foto -->
+          <div class="filmstrip-wrapper">
+            <!-- PITA SANGAT BESAR DI FRAME PALING ATAS (HIERARKI TERTINGGI / Z-INDEX 99) -->
+            <div class="filmstrip-ribbon-topmost" aria-hidden="true">
+              <img src="assets/stickers/ribbon.png" alt="Pita Besar Strip Film" class="ribbon-img">
+            </div>
+
+            <div class="filmstrip-photos">
+              <div class="photo-slot photo-slot-1"><div class="slot-inner"><span>📸 Our Story</span></div></div>
+              <div class="photo-slot photo-slot-2"><div class="slot-inner"><span>✨ Sweet Smile</span></div></div>
+              <div class="photo-slot photo-slot-3"><div class="slot-inner"><span>💖 Precious Time</span></div></div>
+              <div class="photo-slot photo-slot-4"><div class="slot-inner"><span>Forever With You</span></div></div>
+            </div>
+            <img src="assets/stickers/filmstrip.png" alt="Filmstrip Kenangan" class="filmstrip-overlay">
+          </div>
+
+          <!-- Sisi Kanan: Vinyl & Card Spotify -->
+          <div class="music-player-area">
+            
+            <!-- Vinyl Piringan Hitam (Klik untuk Play/Pause) -->
+            <div class="vinyl-container" id="vinylBtn" role="button" tabindex="0" aria-label="Putar musik latar">
+              <div class="vinyl-record" id="vinylRecord">
+                <img src="assets/stickers/vinyl.png" alt="Vinyl Piringan Hitam" class="vinyl-img">
+                <div class="vinyl-curved-text">
+                  <svg viewBox="0 0 200 200" class="curved-svg">
+                    <path id="curve" d="M 30,100 A 70,70 0 1,1 170,100" fill="transparent" />
+                    <text>
+                      <textPath href="#curve" startOffset="50%" text-anchor="middle">
+                        Sampai Akhir Waktu
+                      </textPath>
+                    </text>
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card Spotify dengan Frame Pink + PUSHPIN BESAR -->
+            <div class="spotify-card-wrapper">
+              
+              <!-- PUSHPIN BESAR Menancap di Pojok Kanan Atas Spotify Card (Persis di Foto Referensi) -->
+              <div class="spotify-pushpin-large" aria-hidden="true">
+                <img src="assets/stickers/pushpin.png" alt="Pushpin Besar">
+              </div>
+
+              <div class="spotify-card">
+                <div class="spotify-header">
+                  <div class="track-thumb"></div>
+                  <div class="track-info">
+                    <p class="track-title">Sampai Akhir Waktu</p>
+                    <p class="track-artist">Yovie & Nuno</p>
+                  </div>
+                </div>
+
+                <div class="spotify-lyrics">
+                  <p>Yang kuingin bukan sekedar</p>
+                  <p>Hanya untuk pacaran</p>
+                  <p>Yang kumau memberikan seluruh cinta</p>
+                  <p>Sampai akhir waktu nanti</p>
+                </div>
+
+                <div class="spotify-footer">
+                  <svg class="spotify-icon" viewBox="0 0 24 24" width="18" height="18" fill="#1ed760">
+                    <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.503 17.309c-.216.353-.674.468-1.026.252-2.813-1.718-6.354-2.107-10.525-1.155-.403.093-.807-.158-.9-.561-.093-.404.158-.808.562-.9 4.568-1.042 8.494-.6 11.637 1.318.353.216.468.674.252 1.046zm1.47-3.266c-.272.441-.851.583-1.293.311-3.22-1.979-8.129-2.551-11.938-1.394-.496.151-1.025-.132-1.176-.628-.151-.496.132-1.025.628-1.176 4.358-1.323 9.776-.682 13.468 1.584.442.271.583.85.311 1.303zm.126-3.41c-3.86-2.292-10.228-2.503-13.918-1.383-.591.179-1.217-.156-1.396-.747-.179-.591.156-1.217.747-1.396 4.246-1.289 11.272-1.036 15.698 1.591.533.316.707 1.008.391 1.541-.316.533-1.008.707-1.522.394z"/>
+                  </svg>
+                  <span>Spotify</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Audio Element untuk section musik -->
+      <audio id="bgMusic" src="assets/audio/song.mp3" preload="metadata" loop></audio>
+
+    </section>
+
+    <!-- Pembatas Robekan Kertas Putih (white-ripped.png) Antara Section 2 dan Section 3 -->
+    <div class="section-divider divider-s2-s3" aria-hidden="true">
+      <img src="assets/stickers/white-ripped.png" alt="" class="divider-ripped-img">
+    </div>
+
+    <!-- ==================== SECTION 3: CALENDAR & VIDEO ==================== -->
+    <section class="section memory-section" id="memory">
+      
+      <!-- Kertas Sobek di Pojok Kiri Atas Section 3: paper-sec3.png Sesuai Arahan User -->
+      <div class="sticker sticker-paper-sec3" aria-hidden="true">
+        <img src="assets/stickers/paper-sec3.png" alt="Paper Section 3">
+      </div>
+
+      <!-- Lapisan Kertas Sobek paper-2.png di Background Section 3 -->
+      <div class="sticker paper-backdrop-s3" aria-hidden="true">
+        <img src="assets/stickers/paper-2.png" alt="">
+      </div>
+
+      <!-- Bunga Merah di Atas Section 3 -->
+      <div class="sticker memory-flower-top flower-spin" aria-hidden="true">
+        <img src="assets/stickers/red-flower.png" alt="Bunga Merah">
+      </div>
+
+      <!-- Bunga Biru Lili di Pojok Kiri Bawah Section 3 -->
+      <div class="sticker memory-flower-corner" aria-hidden="true">
+        <img src="assets/stickers/flower-blueliliy.png" alt="Bunga Biru Lili">
+      </div>
+
+      <div class="memory-content-grid">
+        
+        <!-- Kalender Ulang Tahun: Menggunakan paper-3.png sebagai alas kertas kalender -->
+        <div class="calendar-wrapper">
+          
+          <!-- PUSHPIN BESAR di Kalender Section 3 -->
+          <div class="calendar-pushpin-large" aria-hidden="true">
+            <img src="assets/stickers/pushpin.png" alt="Pushpin Besar">
+          </div>
+
+          <div class="calendar-card-paper3">
+            <!-- Alas Kertas Sobek paper-3.png -->
+            <img src="assets/stickers/paper-3.png" alt="Kertas Kalender" class="paper-3-img" aria-hidden="true">
+
+            <!-- Konten Kalender di Atas paper-3.png -->
+            <div class="calendar-inner-content">
+              
+              <!-- Stiker Bintang di Pojok Kalender -->
+              <div class="calendar-star-sticker">
+                <img src="assets/stickers/star.png" alt="" class="star-img">
+              </div>
+
+              <div class="calendar-header">
+                <h3 class="calendar-month">December</h3>
+                <span class="calendar-year">2026</span>
+              </div>
+
+              <!-- Grid Hari -->
+              <div class="calendar-grid">
+                <span class="day-name">Sun</span>
+                <span class="day-name">Mon</span>
+                <span class="day-name">Tue</span>
+                <span class="day-name">Wed</span>
+                <span class="day-name">Thu</span>
+                <span class="day-name">Fri</span>
+                <span class="day-name">Sat</span>
+
+                <!-- Baris 1: Nov 29-30 kosong, Dec 1-5 -->
+                <span class="day-num empty"></span>
+                <span class="day-num empty"></span>
+                <span class="day-num"><span class="num-text">1</span></span>
+                <span class="day-num"><span class="num-text">2</span></span>
+                
+                <!-- 3 DESEMBER 2026: DILINGKARI MERAH BULAT PRESISI -->
+                <span class="day-num birthday-highlight" id="birthdayDate">
+                  <span class="num-text">3</span>
+                  <svg class="red-circle-svg" viewBox="0 0 36 36" aria-hidden="true">
+                    <circle cx="18" cy="18" r="14" fill="none" stroke="#d32032" stroke-width="2.6" stroke-linecap="round"/>
+                  </svg>
+                </span>
+                
+                <span class="day-num"><span class="num-text">4</span></span>
+                <span class="day-num"><span class="num-text">5</span></span>
+
+                <!-- Baris 2 -->
+                <span class="day-num"><span class="num-text">6</span></span>
+                <span class="day-num"><span class="num-text">7</span></span>
+                <span class="day-num"><span class="num-text">8</span></span>
+                <span class="day-num"><span class="num-text">9</span></span>
+                <span class="day-num"><span class="num-text">10</span></span>
+                <span class="day-num"><span class="num-text">11</span></span>
+                <span class="day-num"><span class="num-text">12</span></span>
+
+                <!-- Baris 3 -->
+                <span class="day-num"><span class="num-text">13</span></span>
+                <span class="day-num"><span class="num-text">14</span></span>
+                <span class="day-num"><span class="num-text">15</span></span>
+                <span class="day-num"><span class="num-text">16</span></span>
+                <span class="day-num"><span class="num-text">17</span></span>
+                <span class="day-num"><span class="num-text">18</span></span>
+                <span class="day-num"><span class="num-text">19</span></span>
+
+                <!-- Baris 4 -->
+                <span class="day-num"><span class="num-text">20</span></span>
+                <span class="day-num"><span class="num-text">21</span></span>
+                <span class="day-num"><span class="num-text">22</span></span>
+                <span class="day-num"><span class="num-text">23</span></span>
+                <span class="day-num"><span class="num-text">24</span></span>
+                <span class="day-num"><span class="num-text">25</span></span>
+                <span class="day-num"><span class="num-text">26</span></span>
+
+                <!-- Baris 5 -->
+                <span class="day-num"><span class="num-text">27</span></span>
+                <span class="day-num"><span class="num-text">28</span></span>
+                <span class="day-num"><span class="num-text">29</span></span>
+                <span class="day-num"><span class="num-text">30</span></span>
+                <span class="day-num"><span class="num-text">31</span></span>
+                <span class="day-num empty"></span>
+                <span class="day-num empty"></span>
+              </div>
+
+              <div class="calendar-footer">
+                <span class="handwritten-note">it's your birthday ✨</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Bingkai Polaroid untuk Pemutar Video -->
+        <div class="polaroid-wrapper">
+          <div class="polaroid-frame">
+            <div class="polaroid-video-screen">
+              <video id="birthdayVideo" class="polaroid-video" playsinline loop muted autoplay controls poster="assets/backgrounds/red-paper.webp">
+                <source src="assets/videos/memory.mp4" type="video/mp4">
+              </video>
+              <div class="video-placeholder-overlay" id="videoPlaceholder">
+                <div class="play-pulse-icon">▶</div>
+                <p>Memories of Us</p>
+                <small>Video kenangan siap diputar</small>
+              </div>
+            </div>
+            <div class="polaroid-caption">
+              <p class="caption-script">Happy Birthday, Sayang</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

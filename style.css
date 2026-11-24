@@ -416,15 +416,16 @@ html, body {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 10% 4% 8%;
+  padding: 4% 2% 4%;
   z-index: 10;
 }
 
-/* Filmstrip di Sisi Kiri */
+/* Filmstrip di Sisi Kiri — UKURAN SANGAT BESAR DARI ATAS KE BAWAH KERTAS */
 .filmstrip-wrapper {
   position: relative;
-  width: 44%;
-  max-width: 180px;
+  flex: 0 0 52%;
+  width: 52%;
+  max-width: 240px;
   z-index: 12;
   transform: rotate(-3.5deg);
   transition: transform 0.3s ease;
@@ -437,10 +438,10 @@ html, body {
 /* PITA SANGAT BESAR DI UJUNG KANAN ATAS STRIP FILM (FRAME PALING ATAS / HIERARKI TERTINGGI Z-INDEX 99) */
 .filmstrip-ribbon-topmost {
   position: absolute;
-  top: -46px;
-  right: -46px;
-  width: 175px;
-  height: 175px;
+  top: -32px;
+  right: -24px;
+  width: 145px;
+  height: 145px;
   z-index: 99;
   pointer-events: none;
   transform: rotate(8deg);
@@ -481,7 +482,8 @@ html, body {
 /* Area Pemutar Musik & Card Spotify di Sisi Kanan */
 .music-player-area {
   position: relative;
-  width: 54%;
+  flex: 0 0 46%;
+  width: 46%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1104,10 +1106,10 @@ html, body {
     height: 62px;
   }
   .filmstrip-ribbon-topmost {
-    width: 145px;
-    height: 145px;
-    right: -38px;
-    top: -38px;
+    width: 120px;
+    height: 120px;
+    right: -20px;
+    top: -24px;
   }
 }
 

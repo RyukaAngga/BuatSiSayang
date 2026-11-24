@@ -420,12 +420,12 @@ html, body {
   z-index: 10;
 }
 
-/* Filmstrip di Sisi Kiri — UKURAN SANGAT BESAR DARI ATAS KE BAWAH KERTAS */
+/* Filmstrip di Sisi Kiri — Ukuran Ideal Scrapbook */
 .filmstrip-wrapper {
   position: relative;
-  flex: 0 0 52%;
-  width: 52%;
-  max-width: 240px;
+  flex: 0 0 44%;
+  width: 44%;
+  max-width: 195px;
   z-index: 12;
   transform: rotate(-3.5deg);
   transition: transform 0.3s ease;
@@ -435,13 +435,13 @@ html, body {
   transform: rotate(-1deg) scale(1.02);
 }
 
-/* PITA SANGAT BESAR DI UJUNG KANAN ATAS STRIP FILM (FRAME PALING ATAS / HIERARKI TERTINGGI Z-INDEX 99) */
+/* PITA BESAR DI UJUNG KANAN ATAS STRIP FILM (FRAME PALING ATAS / HIERARKI TERTINGGI Z-INDEX 99) */
 .filmstrip-ribbon-topmost {
   position: absolute;
-  top: -32px;
-  right: -24px;
-  width: 145px;
-  height: 145px;
+  top: -28px;
+  right: -20px;
+  width: 130px;
+  height: 130px;
   z-index: 99;
   pointer-events: none;
   transform: rotate(8deg);
@@ -482,8 +482,8 @@ html, body {
 /* Area Pemutar Musik & Card Spotify di Sisi Kanan */
 .music-player-area {
   position: relative;
-  flex: 0 0 46%;
-  width: 46%;
+  flex: 0 0 52%;
+  width: 52%;
   display: flex;
   flex-direction: column;
   align-items: center;

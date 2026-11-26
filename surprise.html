@@ -11,11 +11,45 @@
   <link rel="stylesheet" href="surprise.css">
 </head>
 <body class="surprise-body">
+
+  <!-- PUSH NOTIFICATION WHATSAPP MELAYANG DI PALING ATAS HALAMAN -->
+  <a href="https://wa.me/6285136447545?text=makasii%20sayangg%20love%20u"
+     target="_blank"
+     rel="noopener noreferrer"
+     class="wa-notification-card wa-top-banner"
+     id="waNotificationCard"
+     aria-label="Kirim pesan WhatsApp ke Ryuka Angga">
+    
+    <div class="wa-notif-header">
+      <div class="wa-app-badge">
+        <svg viewBox="0 0 24 24" class="wa-icon-svg" fill="#25D366" width="16" height="16">
+          <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z"/>
+        </svg>
+        <span>WhatsApp • sekarang</span>
+      </div>
+      <span class="wa-tap-hint">tap to send ↗</span>
+    </div>
+
+    <div class="wa-notif-body">
+      <div class="wa-avatar">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="#d32032">
+          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        </svg>
+      </div>
+      <div class="wa-message-content">
+        <p class="wa-sender">Sayang</p>
+        <p class="wa-text">makasii sayangg love u</p>
+      </div>
+    </div>
+
+  </a>
   
   <main class="scrapbook-container surprise-container" id="surpriseApp">
 
-    <!-- Ambient Audio Player di Halaman Surprise -->
+    <!-- Ambient Audio Player & Sound Effect Yippie (1x play, maks 10 detik) -->
     <audio id="surpriseAudio" src="assets/audio/song.mp3" preload="metadata" loop></audio>
+    <audio id="yippieAudio" src="assets/audio/yippie.mp3" preload="auto"></audio>
+
     <button class="music-toggle-float" id="musicToggleBtn" aria-label="Toggle Musik" title="Musik Latar">
       <svg class="music-icon-svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
         <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
@@ -45,8 +79,8 @@
          ========================================================================= -->
     <section class="surprise-scene active" id="sceneMenu">
       
-      <!-- Bunga Berputar di Pojok Kanan Atas Saja Sesuai Instruksi -->
-      <div class="sticker scene-flower-tr flower-spin" aria-hidden="true">
+      <!-- Bunga Putih Berputar di Pojok Kiri Atas -->
+      <div class="sticker scene-flower-tl flower-spin" aria-hidden="true">
         <img src="assets/stickers/hibiscus.webp" alt="">
       </div>
       <!-- Bunga Pojok Kanan Bawah Diam Saja (Tanpa Putaran) -->
@@ -62,18 +96,17 @@
         </svg>
       </a>
 
-      <!-- Konten Utama Menu (Lebih Rapat ke Atas Menghilangkan Gap Kosong) -->
+      <!-- Konten Utama Menu (Naik Lebih ke Atas) -->
       <div class="menu-main-content">
-        <!-- Header Menu (Minimalis & Bersih) -->
         <div class="menu-header">
           <h1 class="menu-title">Pilih ya sayang</h1>
           <p class="menu-subtitle">Ada 3 kado kecil penuh cinta, sentuh salah satu dulu ya</p>
         </div>
 
-        <!-- 3 PILIHAN KADO POLOS (TANPA CARD, LEBIH NAIK KE ATAS & PROPORSIONAL) -->
+        <!-- 3 PILIHAN KADO POLOS (TANPA CARD, ANIMASI GOYANG KANAN-KIRI) -->
         <div class="fairytale-gifts-container">
           
-          <!-- Opsi 1: Surat Cinta (Menggunakan envelope.webp biasa) -->
+          <!-- Opsi 1: Surat Cinta -->
           <button type="button" class="fairytale-gift-item gift-envelope" id="btnOpenLetter" aria-label="Buka Surat Cinta">
             <div class="gift-asset-wrap">
               <img src="assets/stickers/envelope.webp" alt="Surat Cinta" class="gift-pure-img">
@@ -82,7 +115,7 @@
             <span class="gift-pure-sub">Dear My Love</span>
           </button>
 
-          <!-- Opsi 2: Photobooth Kenangan (Ukuran Diperbesar Seimbang) -->
+          <!-- Opsi 2: Photobooth Kenangan -->
           <button type="button" class="fairytale-gift-item gift-photobooth" id="btnOpenPhotobooth" aria-label="Lihat Photobooth">
             <div class="gift-asset-wrap">
               <img src="assets/stickers/photobooth.webp" alt="Photobooth Kenangan" class="gift-pure-img">
@@ -91,7 +124,7 @@
             <span class="gift-pure-sub">Our Moments</span>
           </button>
 
-          <!-- Opsi 3: Buket Hadiah & Kuis (Buket Biru Dipertahankan) -->
+          <!-- Opsi 3: Buket Hadiah & Kuis -->
           <button type="button" class="fairytale-gift-item gift-bouquet" id="btnOpenQuiz" aria-label="Buka Kado Bunga">
             <div class="gift-asset-wrap">
               <img src="assets/stickers/buketbiru.webp" alt="Buket Hadiah" class="gift-pure-img">
@@ -110,10 +143,12 @@
          ========================================================================= -->
     <section class="surprise-scene" id="sceneLetter">
       
-      <!-- Navigasi Kembali ke Menu -->
-      <button type="button" class="top-nav-back btn-back-to-menu" aria-label="Kembali ke Menu Pilihan">
-        <span class="nav-back-arrow">←</span>
-        <span>Pilihan Hadiah</span>
+      <!-- Navigasi Kembali ke Menu (Bulatan Ikon Simpel) -->
+      <button type="button" class="top-nav-back top-nav-circle btn-back-to-menu" aria-label="Kembali ke Menu Pilihan" title="Kembali">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
       </button>
 
       <div class="letter-stage" id="letterStage">
@@ -185,41 +220,43 @@
     </section>
 
     <!-- =========================================================================
-         SCENE 2B: PHOTOBOOTH KENANGAN ("PIECES OF OUR STORY")
+         SCENE 2B: PHOTOBOOTH KENANGAN ("PIECES OF OUR STORY") - BERBASIS WHITE-PAPER
          ========================================================================= -->
     <section class="surprise-scene" id="scenePhotobooth">
       
-      <!-- Navigasi Kembali ke Menu -->
-      <button type="button" class="top-nav-back btn-back-to-menu" aria-label="Kembali ke Menu Pilihan">
-        <span class="nav-back-arrow">←</span>
-        <span>Pilihan Hadiah</span>
+      <!-- Navigasi Kembali ke Menu (Bulatan Ikon Simpel) -->
+      <button type="button" class="top-nav-back top-nav-circle btn-back-to-menu" aria-label="Kembali ke Menu Pilihan" title="Kembali">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
       </button>
 
       <!-- Header Photobooth -->
       <div class="photobooth-header">
-        <div class="badge-pill-soft">
-          <span>Sweet Moments</span>
-        </div>
         <h2 class="photobooth-title">Pieces of our story</h2>
         <p class="photobooth-subtitle">Setiap senyuman bersamamu adalah bagian favoritku di hidup ini.</p>
       </div>
 
-      <!-- Kontainer Scrapbook Galeri Foto -->
-      <div class="photobooth-board">
-        
-        <!-- Pushpin Besar di Atas -->
-        <div class="photobooth-pushpin" aria-hidden="true">
-          <img src="assets/stickers/pushpin.webp" alt="">
-        </div>
+      <!-- Alas Kertas Asli (white-paper.webp) Tanpa Kotak CSS -->
+      <div class="photobooth-paper-stage">
+        <img src="assets/backgrounds/white-paper.webp" alt="" class="paper-stage-bg" aria-hidden="true">
 
         <!-- Pita Merah di Pojok Kanan Atas -->
         <div class="photobooth-ribbon" aria-hidden="true">
           <img src="assets/stickers/ribbon.webp" alt="">
         </div>
 
-        <!-- Strip Photobooth Kenangan Asli -->
-        <div class="photobooth-strip-wrap">
-          <img src="assets/stickers/photobooth.webp" alt="Galeri Kenangan Kita" class="photobooth-strip-img">
+        <div class="photobooth-paper-inner">
+          <!-- Strip Photobooth Kenangan Asli -->
+          <div class="photobooth-strip-wrap">
+            <img src="assets/stickers/photobooth.webp" alt="Galeri Kenangan Kita" class="photobooth-strip-img">
+          </div>
+
+          <!-- Catatan Kaki Manis -->
+          <div class="photobooth-caption-box">
+            <p class="handwritten-caption">"Thank you for being the sweetest chapter in my life."</p>
+          </div>
         </div>
 
         <!-- Bunga Pink di Pojok Bawah -->
@@ -227,34 +264,28 @@
           <img src="assets/stickers/pink-flowers.webp" alt="">
         </div>
 
-        <!-- Catatan Kaki Manis -->
-        <div class="photobooth-caption-box">
-          <p class="handwritten-caption">"Thank you for being the sweetest chapter in my life."</p>
-        </div>
-
       </div>
 
     </section>
 
     <!-- =========================================================================
-         SCENE 2C: KUIS HADIAH INTERAKTIF ("KAMU SUKA NGGA?")
+         SCENE 2C: KUIS HADIAH INTERAKTIF (FULL ASET KERTAS TANPA CARD PUTIH)
          ========================================================================= -->
     <section class="surprise-scene" id="sceneQuiz">
       
-      <!-- Navigasi Kembali ke Menu -->
-      <button type="button" class="top-nav-back btn-back-to-menu" aria-label="Kembali ke Menu Pilihan">
-        <span class="nav-back-arrow">←</span>
-        <span>Pilihan Hadiah</span>
+      <!-- Navigasi Kembali ke Menu (Bulatan Ikon Simpel) -->
+      <button type="button" class="top-nav-back top-nav-circle btn-back-to-menu" aria-label="Kembali ke Menu Pilihan" title="Kembali">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
       </button>
 
-      <!-- STEP 1: PERTANYAAN KUIS (TAG KARTU GANTUNG) -->
+      <!-- STEP 1: PERTANYAAN SINGKAT (ALAS paper-sec2.webp, TANPA PUSHPIN & CONTAINER PUTIH) -->
       <div class="quiz-step active" id="quizStepQuestion">
         
-        <div class="gift-tag-card">
-          <!-- Lubang Tali Tag & Pushpin -->
-          <div class="tag-string-pin" aria-hidden="true">
-            <img src="assets/stickers/pushpin.webp" alt="">
-          </div>
+        <div class="paper-sec2-stage">
+          <img src="assets/stickers/paper-sec2.webp" alt="" class="paper-sec2-bg-img" aria-hidden="true">
 
           <div class="tag-content">
             <span class="tag-badge">Pertanyaan Singkat</span>
@@ -277,90 +308,57 @@
 
       </div>
 
-      <!-- STEP 2: JIKA PILIH [ ✗ ] (SALAH PENCET - RESPON LUCU) -->
+      <!-- STEP 2: JIKA PILIH [ ✗ ] (SALAH PENCET - ALAS paper-sec2.webp) -->
       <div class="quiz-step" id="quizStepWrong">
         
-        <div class="wrong-card">
-          <!-- Stiker Kucing Sedih / Merajuk -->
-          <div class="sad-cat-wrap">
-            <img src="assets/stickers/cat-sad.webp" alt="Kucing Sedih" class="sad-cat-img">
-          </div>
+        <div class="paper-sec2-stage wrong-paper-stage">
+          <img src="assets/stickers/paper-sec2.webp" alt="" class="paper-sec2-bg-img" aria-hidden="true">
 
-          <div class="wrong-card-body">
-            <h3 class="wrong-title">Kayaknya kamu salah pencet deh...</h3>
-            <p class="wrong-desc">
-              Aku tahu dan percaya di dalam lubuk hatimu yang paling dalam, kamu sebenarnya mau pencet <b>"Suka Banget"</b>, kan?
-            </p>
+          <div class="wrong-paper-inner">
+            <div class="sad-cat-wrap">
+              <img src="assets/stickers/cat-sad.webp" alt="Kucing Sedih" class="sad-cat-img">
+            </div>
 
-            <button type="button" class="btn-retry-quiz" id="btnRetryQuiz">
-              <span>Pencet lagi dong</span>
-            </button>
+            <div class="wrong-card-body">
+              <h3 class="wrong-title">Kayaknya kamu salah pencet deh...</h3>
+              <p class="wrong-desc">
+                Aku tahu dan percaya di dalam lubuk hatimu yang paling dalam, kamu sebenarnya mau pencet <b>"Suka Banget"</b>, kan?
+              </p>
+
+              <button type="button" class="btn-retry-quiz" id="btnRetryQuiz">
+                <span>Pencet lagi dong</span>
+              </button>
+            </div>
           </div>
         </div>
 
       </div>
 
-      <!-- STEP 3: JIKA PILIH [ ✓ ] (SELEBRASI HADIAH & NOTIFIKASI WHATSAPP) -->
+      <!-- STEP 3: JIKA PILIH [ ✓ ] (SELEBRASI HADIAH DI ATAS white-paper.webp) -->
       <div class="quiz-step" id="quizStepCelebration">
         
         <!-- Hati & Sparkles Melayang Animasi Vector -->
         <div class="floating-hearts-container" id="heartsContainer" aria-hidden="true"></div>
 
-        <div class="celebration-card">
-          
-          <!-- Hiasan Bunga & Pita -->
-          <div class="celebration-ribbon" aria-hidden="true">
-            <img src="assets/stickers/ribbon.webp" alt="">
-          </div>
-          
+        <div class="celebration-paper-stage">
+          <img src="assets/backgrounds/white-paper.webp" alt="" class="paper-stage-bg" aria-hidden="true">
+
           <div class="celebration-hero">
             <div class="celebration-speech-bubble">
               <span>ini buat kamu sayang!</span>
             </div>
 
-            <!-- Foto Hadiah / Bunga Utama -->
-            <div class="celebration-photo-frame">
-              <img src="assets/stickers/Mikazuki_Arion.webp" alt="Hadiah Spesial" class="celebration-img">
-              <div class="celebration-bouquet-overlay">
-                <img src="assets/stickers/buketbiru.webp" alt="Buket Bunga" class="bouquet-img">
+            <!-- Komposit Mika Memegang Buket Biru + Pita Sangat Besar (Tanpa Bingkai Kotak) -->
+            <div class="mika-bouquet-composite">
+              <img src="assets/stickers/Mikazuki_Arion.webp" alt="Mika Memegang Buket" class="mika-char-img">
+              <div class="mika-held-bouquet">
+                <img src="assets/stickers/buketbiru.webp" alt="Buket Biru" class="bouquet-img">
+                <img src="assets/stickers/ribbon.webp" alt="" class="bouquet-giant-ribbon" aria-hidden="true">
               </div>
             </div>
 
             <p class="celebration-text">Happy Birthday, my favorite person!</p>
           </div>
-
-          <!-- KARTU NOTIFIKASI WHATSAPP INTERAKTIF -->
-          <a href="https://wa.me/6285136447545?text=makasii%20sayangg%20love%20u" 
-             target="_blank" 
-             rel="noopener noreferrer" 
-             class="wa-notification-card" 
-             id="waNotificationCard"
-             aria-label="Kirim pesan WhatsApp ke Ryuka Angga">
-            
-            <div class="wa-notif-header">
-              <div class="wa-app-badge">
-                <svg viewBox="0 0 24 24" class="wa-icon-svg" fill="#25D366" width="16" height="16">
-                  <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z"/>
-                </svg>
-                <span>WhatsApp • sekarang</span>
-              </div>
-              <span class="wa-tap-hint">tap to send ↗</span>
-            </div>
-
-            <div class="wa-notif-body">
-              <div class="wa-avatar">
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="#d32032">
-                  <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-                </svg>
-              </div>
-              <div class="wa-message-content">
-                <p class="wa-sender">Sayang</p>
-                <p class="wa-text">makasii sayangg love u</p>
-              </div>
-            </div>
-
-          </a>
-
         </div>
 
       </div>

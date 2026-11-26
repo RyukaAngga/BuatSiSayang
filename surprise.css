@@ -1,5 +1,6 @@
 /* ==========================================================================
    SURPRISE.CSS — Fairytale Scrapbook Multi-Scene Interactive Styles
+   Full-Asset Paper Layouts, Mika + Blue Bouquet Composite & Top WA Banner
    ========================================================================== */
 
 /* Basis Body & Container */
@@ -142,49 +143,35 @@
   display: block;
 }
 
-/* Navigasi Back Button (Pojok Kiri Atas) */
+/* Navigasi Back Button (Bulatan Ikon Simpel di Semua Halaman) */
 .top-nav-back {
   position: absolute;
   top: 18px;
   left: 18px;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  background: rgba(255, 255, 255, 0.88);
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.92);
   color: #1a1a1a;
   border: none;
   outline: none;
-  padding: 6px 14px;
-  border-radius: 9999px;
-  font-size: 0.82rem;
-  font-weight: 700;
   text-decoration: none;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.28);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
   cursor: pointer;
   z-index: 40;
   transition: transform 0.2s ease, background 0.2s ease;
 }
 
-/* Bulatan Ikon Simpel untuk Tombol Kembali */
 .top-nav-back.top-nav-circle {
   width: 40px;
   height: 40px;
   padding: 0;
   border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(255, 255, 255, 0.92);
 }
 
 .top-nav-back:hover {
   transform: scale(1.08);
   background: #ffffff;
-}
-
-.nav-back-arrow {
-  font-size: 1rem;
-  line-height: 1;
 }
 
 /* Scene Wrapper (State Management) */
@@ -210,10 +197,10 @@
   transform: translateY(0);
 }
 
-/* Stiker Dekorasi di Sudut */
-.scene-flower-tr {
-  top: 1.5%;
-  right: -3%;
+/* Stiker Bunga Sudut */
+.scene-flower-tl {
+  top: 1%;
+  left: -4%;
   width: 32%;
   max-width: 125px;
   z-index: 2;
@@ -230,20 +217,25 @@
 }
 
 /* ==========================================================================
-   SCENE 1: MENU PILIHAN HADIAH ("PILIH YA SAYANG")
-   ========================================================================= */
+   SCENE 1: MENU PILIHAN HADIAH ("PILIH YA SAYANG") — NAIK LEBIH KE ATAS
+   ========================================================================== */
+#sceneMenu {
+  justify-content: flex-start;
+  padding-top: 13vh;
+}
+
 .menu-main-content {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: -65px; /* Naik lebih ke atas agar space tidak kosong melompong */
+  margin-top: 0;
   z-index: 10;
 }
 
 .menu-header {
   text-align: center;
-  margin-bottom: 22px;
+  margin-bottom: 24px;
   z-index: 5;
 }
 
@@ -276,7 +268,7 @@
   justify-content: space-around;
   align-items: flex-end;
   gap: 12px;
-  margin: 10px 0 0;
+  margin: 8px 0 0;
   z-index: 10;
 }
 
@@ -308,7 +300,6 @@
   margin-bottom: 6px;
 }
 
-/* Sizing Spesifik Tiap Aset Bersih & Proporsional */
 .gift-envelope .gift-pure-img {
   width: 106px;
   height: auto;
@@ -345,15 +336,6 @@
   margin-top: 2px;
 }
 
-.menu-bottom-hint {
-  font-family: var(--font-typewriter, 'Courier Prime', monospace);
-  font-size: 0.8rem;
-  color: #faedd9;
-  opacity: 0.88;
-  text-align: center;
-  animation: pulseHint 2.4s infinite ease-in-out;
-}
-
 /* ==========================================================================
    SCENE 2A: SURAT CINTA INTERAKTIF ("DEAR MY LOVE")
    ========================================================================== */
@@ -378,7 +360,6 @@
   padding-bottom: 20px;
 }
 
-/* Wadah Lembar Surat */
 .letter-sheet-container {
   position: relative;
   width: 92%;
@@ -391,13 +372,11 @@
   align-items: center;
 }
 
-/* Saat Surat Ditarik / Terbuka */
 .letter-sheet-container.pulled {
   transform: translateY(-80px);
   z-index: 25;
 }
 
-/* Tombol Klik to Read */
 .click-to-read-pill {
   background: #ffffff;
   color: #8b1820;
@@ -425,7 +404,6 @@
   pointer-events: none;
 }
 
-/* Lembaran Kertas Surat */
 .letter-paper {
   position: relative;
   width: 100%;
@@ -525,7 +503,6 @@
   margin-top: -6px;
 }
 
-/* Dua Tangan Halftone Memegang Kertas Surat */
 .letter-holding-hands {
   position: absolute;
   bottom: -40px;
@@ -549,7 +526,6 @@
   opacity: 1;
 }
 
-/* Kantong Amplop Bagian Depan */
 .letter-envelope-pocket {
   position: absolute;
   bottom: -15px;
@@ -569,69 +545,96 @@
 }
 
 /* ==========================================================================
-   SCENE 2B: PHOTOBOOTH KENANGAN ("PIECES OF OUR STORY")
+   SHARED FULL-ASSET PAPER STAGES (TANPA CONTAINER CSS PUTIH)
+   ========================================================================== */
+.paper-stage-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  pointer-events: none;
+  z-index: 1;
+  filter: drop-shadow(0 14px 32px rgba(0, 0, 0, 0.45));
+}
+
+/* Alas Kertas paper-sec2.webp Terkunci Proporsional (523 x 477) */
+.paper-sec2-stage {
+  position: relative;
+  width: 98%;
+  max-width: 430px;
+  aspect-ratio: 523 / 477;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.paper-sec2-bg-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+  z-index: 1;
+  filter: drop-shadow(0 14px 30px rgba(0, 0, 0, 0.42));
+}
+
+/* ==========================================================================
+   SCENE 2B: PHOTOBOOTH KENANGAN (ALAS white-paper.webp)
    ========================================================================== */
 .photobooth-header {
   text-align: center;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
   z-index: 5;
 }
 
 .photobooth-title {
   font-family: var(--font-handwriting, 'Caveat', cursive);
-  font-size: 2.6rem;
+  font-size: 2.3rem;
   color: #fffdfa;
-  text-shadow: 2px 3px 6px rgba(0,0,0,0.4);
+  text-shadow: 2px 3px 6px rgba(0, 0, 0, 0.4);
   line-height: 1.1;
-  margin: 6px 0 4px;
+  margin: 0 0 4px;
 }
 
 .photobooth-subtitle {
-  font-size: 0.82rem;
+  font-size: 0.78rem;
   color: #faedd9;
   opacity: 0.9;
-  max-width: 290px;
+  max-width: 280px;
   margin: 0 auto;
 }
 
-.photobooth-board {
+.photobooth-paper-stage {
   position: relative;
   width: 94%;
   max-width: 380px;
-  background: #fdfaf6;
-  border-radius: 12px;
-  padding: 24px 16px 20px;
-  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.45);
+  aspect-ratio: 420 / 540;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  transform: rotate(-1.5deg);
+  justify-content: center;
+  transform: rotate(-1.2deg);
   z-index: 10;
 }
 
-.photobooth-pushpin {
-  position: absolute;
-  top: -24px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 58px;
-  height: 58px;
-  z-index: 25;
-  pointer-events: none;
-}
-
-.photobooth-pushpin img {
-  width: 100%;
-  height: auto;
-  filter: drop-shadow(2px 6px 8px rgba(0,0,0,0.35));
+.photobooth-paper-inner {
+  position: relative;
+  z-index: 5;
+  width: 82%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12% 4% 10%;
 }
 
 .photobooth-ribbon {
   position: absolute;
-  top: -26px;
-  right: -24px;
-  width: 110px;
-  height: 110px;
+  top: -22px;
+  right: -20px;
+  width: 115px;
+  height: 115px;
   z-index: 22;
   pointer-events: none;
 }
@@ -639,13 +642,13 @@
 .photobooth-ribbon img {
   width: 100%;
   height: auto;
-  filter: drop-shadow(3px 8px 12px rgba(0,0,0,0.4));
+  filter: drop-shadow(3px 8px 12px rgba(0, 0, 0, 0.4));
 }
 
 .photobooth-strip-wrap {
   width: 100%;
-  max-width: 220px;
-  margin: 6px 0 14px;
+  max-width: 260px;
+  margin: 4px 0 16px;
   transform: rotate(1deg);
 }
 
@@ -653,15 +656,15 @@
   width: 100%;
   height: auto;
   display: block;
-  filter: drop-shadow(0 6px 16px rgba(0,0,0,0.3));
+  filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.3));
 }
 
 .photobooth-flower {
   position: absolute;
-  bottom: -20px;
-  left: -20px;
-  width: 90px;
-  height: 90px;
+  bottom: -18px;
+  left: -18px;
+  width: 92px;
+  height: 92px;
   z-index: 22;
   pointer-events: none;
 }
@@ -669,7 +672,7 @@
 .photobooth-flower img {
   width: 100%;
   height: auto;
-  filter: drop-shadow(2px 6px 8px rgba(0,0,0,0.3));
+  filter: drop-shadow(2px 6px 8px rgba(0, 0, 0, 0.3));
 }
 
 .photobooth-caption-box {
@@ -688,7 +691,7 @@
 }
 
 /* ==========================================================================
-   SCENE 2C: KUIS HADIAH INTERAKTIF ("KAMU SUKA NGGA?")
+   SCENE 2C: KUIS HADIAH INTERAKTIF (FULL ASET KERTAS)
    ========================================================================== */
 .quiz-step {
   display: none;
@@ -702,161 +705,141 @@
   display: flex;
 }
 
-/* STEP 1: Tag Kartu Gantung */
-.gift-tag-card {
+/* STEP 1: Pertanyaan Singkat di Atas paper-sec2.webp */
+.tag-content {
   position: relative;
-  width: 92%;
-  max-width: 360px;
-  background: #fdfaf3;
-  border-radius: 16px;
-  padding: 38px 22px 28px;
-  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.45);
+  z-index: 5;
+  width: 74%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
-  color: #1a1a1a;
-  transform: rotate(-1.5deg);
-  z-index: 10;
-}
-
-.tag-string-pin {
-  position: absolute;
-  top: -26px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60px;
-  height: 60px;
-  z-index: 20;
-  pointer-events: none;
-}
-
-.tag-string-pin img {
-  width: 100%;
-  height: auto;
-  filter: drop-shadow(2px 6px 10px rgba(0, 0, 0, 0.35));
+  padding-top: 10px;
 }
 
 .tag-badge {
   display: inline-block;
-  background: #faeedb;
+  background: rgba(139, 24, 32, 0.1);
   color: #8b1820;
-  padding: 4px 14px;
+  padding: 3px 12px;
   border-radius: 9999px;
-  font-size: 0.78rem;
+  font-size: 0.72rem;
   font-weight: 700;
-  margin-bottom: 12px;
+  margin-bottom: 6px;
 }
 
 .tag-question {
   font-family: var(--font-handwriting, 'Caveat', cursive);
-  font-size: 2.1rem;
+  font-size: 1.7rem;
   color: #8b1820;
-  line-height: 1.25;
-  margin-bottom: 10px;
+  line-height: 1.18;
+  margin-bottom: 6px;
 }
 
 .tag-hint {
-  font-size: 0.85rem;
+  font-size: 0.76rem;
   color: #554433;
-  margin-bottom: 24px;
+  margin-bottom: 14px;
 }
 
 .tag-buttons-group {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  width: 100%;
+  gap: 8px;
+  width: 92%;
 }
 
 .tag-btn {
   width: 100%;
-  padding: 13px 18px;
+  padding: 10px 14px;
   border-radius: 9999px;
-  font-size: 0.95rem;
+  font-size: 0.86rem;
   font-weight: 700;
   border: none;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 7px;
   transition: transform 0.22s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.22s ease;
 }
 
 .tag-btn-yes {
   background: #8b1820;
   color: #ffffff;
-  box-shadow: 0 4px 14px rgba(139, 24, 32, 0.35);
+  box-shadow: 0 4px 12px rgba(139, 24, 32, 0.35);
 }
 
 .tag-btn-yes:hover {
   transform: scale(1.03);
-  box-shadow: 0 6px 18px rgba(139, 24, 32, 0.45);
+  box-shadow: 0 6px 16px rgba(139, 24, 32, 0.45);
 }
 
 .tag-btn-no {
-  background: #f0e6dc;
+  background: #efe3d5;
   color: #554433;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
 }
 
 .tag-btn-no:hover {
   transform: scale(1.02);
-  background: #e8dbcf;
+  background: #e6d6c4;
 }
 
 .tag-btn:active {
   transform: scale(0.96);
 }
 
-/* STEP 2: Salah Pencet (Respon Kucing Sedih) */
-.wrong-card {
-  width: 92%;
-  max-width: 360px;
-  background: #fffdfa;
-  border-radius: 16px;
-  padding: 24px 20px 26px;
-  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.45);
+/* STEP 2: Salah Pencet (Kucing Sedih di Atas paper-sec2.webp) */
+.wrong-paper-inner {
+  position: relative;
+  z-index: 5;
+  width: 74%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
-  z-index: 10;
+  padding-top: 6px;
 }
 
 .sad-cat-wrap {
-  width: 140px;
-  height: 140px;
-  margin: 0 auto 14px;
+  width: 90px;
+  height: 90px;
+  margin: 0 auto 6px;
 }
 
 .sad-cat-img {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  filter: drop-shadow(0 6px 12px rgba(0,0,0,0.25));
+  filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.25));
 }
 
 .wrong-title {
   font-family: var(--font-handwriting, 'Caveat', cursive);
-  font-size: 1.85rem;
+  font-size: 1.48rem;
   color: #8b1820;
-  margin-bottom: 8px;
-  line-height: 1.2;
+  margin-bottom: 4px;
+  line-height: 1.15;
 }
 
 .wrong-desc {
-  font-size: 0.88rem;
+  font-size: 0.75rem;
   color: #3d302a;
-  line-height: 1.5;
-  margin-bottom: 20px;
+  line-height: 1.4;
+  margin-bottom: 12px;
 }
 
 .btn-retry-quiz {
   background: #8b1820;
   color: #fff;
   border: none;
-  padding: 12px 24px;
+  padding: 9px 20px;
   border-radius: 9999px;
   font-weight: 700;
-  font-size: 0.92rem;
+  font-size: 0.84rem;
   cursor: pointer;
-  box-shadow: 0 4px 14px rgba(139, 24, 32, 0.35);
+  box-shadow: 0 4px 12px rgba(139, 24, 32, 0.35);
   transition: transform 0.2s ease;
 }
 
@@ -864,42 +847,27 @@
   transform: scale(1.04);
 }
 
-/* STEP 3: Selebrasi Hadiah & Pop-up WhatsApp */
-.celebration-card {
+/* STEP 3: Selebrasi Hadiah di Atas white-paper.webp (Mika Pegang Buket Biru + Pita Besar) */
+.celebration-paper-stage {
   position: relative;
-  width: 94%;
-  max-width: 380px;
-  background: #fdfaf6;
-  border-radius: 16px;
-  padding: 24px 16px 20px;
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5);
+  width: 95%;
+  max-width: 390px;
+  aspect-ratio: 420 / 560;
   display: flex;
-  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  transform: rotate(-1deg);
   z-index: 10;
 }
 
-.celebration-ribbon {
-  position: absolute;
-  top: -28px;
-  right: -24px;
-  width: 115px;
-  height: 115px;
-  z-index: 25;
-  pointer-events: none;
-}
-
-.celebration-ribbon img {
-  width: 100%;
-  height: auto;
-  filter: drop-shadow(2px 8px 12px rgba(0,0,0,0.4));
-}
-
 .celebration-hero {
+  position: relative;
+  z-index: 5;
+  width: 86%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
+  padding: 8% 2%;
 }
 
 .celebration-speech-bubble {
@@ -908,79 +876,106 @@
   padding: 6px 18px;
   border-radius: 9999px;
   font-weight: 700;
-  font-size: 0.88rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  margin-bottom: 12px;
+  font-size: 0.86rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.16);
+  margin-bottom: 6px;
 }
 
-.celebration-photo-frame {
+/* Komposit Karakter Mika + Buket Biru Menutupi Bunga Merah + Pita Sangat Besar */
+.mika-bouquet-composite {
   position: relative;
   width: 100%;
-  max-width: 250px;
-  aspect-ratio: 1/1;
-  background: #f5ebe6;
-  border-radius: 14px;
-  overflow: hidden;
-  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.15), 0 8px 20px rgba(0, 0, 0, 0.25);
+  max-width: 280px;
+  aspect-ratio: 1 / 1;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.celebration-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.celebration-bouquet-overlay {
-  position: absolute;
-  bottom: -15px;
-  right: -15px;
-  width: 120px;
-  height: 120px;
-  pointer-events: none;
-}
-
-.celebration-bouquet-overlay .bouquet-img {
+.mika-char-img {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  filter: drop-shadow(2px 6px 10px rgba(0,0,0,0.35));
+  display: block;
+  z-index: 2;
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.2));
+}
+
+/* Buket Biru Diposisikan Tepat Menutupi Bunga Merah di Tangan Kanan Mika */
+.mika-held-bouquet {
+  position: absolute;
+  left: 46%;
+  top: 22%;
+  width: 44%;
+  z-index: 5;
+  transform: rotate(12deg);
+  pointer-events: none;
+}
+
+.mika-held-bouquet .bouquet-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(2px 6px 10px rgba(0, 0, 0, 0.32));
+}
+
+/* Pita Sangat Besar Menempel di Buket Biru */
+.bouquet-giant-ribbon {
+  position: absolute;
+  width: 122px;
+  height: auto;
+  bottom: -22px;
+  left: 52%;
+  transform: translateX(-50%) rotate(-10deg);
+  z-index: 8;
+  filter: drop-shadow(3px 8px 14px rgba(0, 0, 0, 0.45));
+  pointer-events: none;
 }
 
 .celebration-text {
   font-family: var(--font-handwriting, 'Caveat', cursive);
-  font-size: 1.55rem;
+  font-size: 1.6rem;
   color: #8b1820;
   font-weight: 700;
-  margin: 12px 0 16px;
+  margin: 6px 0 0;
   text-align: center;
 }
 
-/* KARTU NOTIFIKASI WHATSAPP */
-.wa-notification-card {
-  width: 100%;
-  background: #ffffff;
-  border-radius: 14px;
-  padding: 10px 14px;
+/* ==========================================================================
+   PUSH NOTIFICATION WHATSAPP MELAYANG DI PALING ATAS HALAMAN
+   ========================================================================== */
+.wa-notification-card.wa-top-banner {
+  position: fixed;
+  top: 14px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: calc(100% - 28px);
+  max-width: 440px;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 16px;
+  padding: 11px 15px;
   display: flex;
   flex-direction: column;
   gap: 6px;
   text-decoration: none;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22);
-  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(0, 0, 0, 0.06);
   cursor: pointer;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  z-index: 999;
+  opacity: 0;
+  transform: translateY(-150px);
+  pointer-events: none;
+  transition: box-shadow 0.25s ease;
 }
 
-.wa-notification-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 22px rgba(37, 211, 102, 0.3);
+.wa-notification-card.wa-top-banner.visible {
+  pointer-events: auto;
 }
 
-.wa-notification-card:active {
-  transform: scale(0.98);
+.wa-notification-card.wa-top-banner:hover {
+  box-shadow: 0 14px 36px rgba(37, 211, 102, 0.35), 0 0 0 1px rgba(37, 211, 102, 0.25);
 }
 
 .wa-notif-header {
@@ -992,8 +987,8 @@
 .wa-app-badge {
   display: flex;
   align-items: center;
-  gap: 5px;
-  font-size: 0.68rem;
+  gap: 6px;
+  font-size: 0.7rem;
   color: #667781;
   font-weight: 600;
 }
@@ -1003,7 +998,7 @@
 }
 
 .wa-tap-hint {
-  font-size: 0.65rem;
+  font-size: 0.66rem;
   color: #25D366;
   font-weight: 700;
 }
@@ -1015,8 +1010,8 @@
 }
 
 .wa-avatar {
-  width: 36px;
-  height: 36px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
   background: #ffebee;
   display: flex;
@@ -1032,14 +1027,14 @@
 }
 
 .wa-sender {
-  font-size: 0.82rem;
+  font-size: 0.84rem;
   font-weight: 700;
   color: #111b21;
   line-height: 1.2;
 }
 
 .wa-text {
-  font-size: 0.78rem;
+  font-size: 0.8rem;
   color: #3b4a54;
   white-space: nowrap;
   overflow: hidden;
@@ -1068,21 +1063,32 @@
    ========================================================================== */
 @media (max-width: 380px) {
   .menu-title {
-    font-size: 2.4rem;
+    font-size: 2rem;
   }
   .gift-envelope .gift-pure-img {
-    width: 95px;
+    width: 94px;
   }
   .gift-photobooth .gift-pure-img {
-    width: 82px;
+    width: 90px;
   }
   .gift-bouquet .gift-pure-img {
-    width: 95px;
+    width: 80px;
   }
   .letter-salutation {
     font-size: 1.8rem;
   }
   .tag-question {
-    font-size: 1.8rem;
+    font-size: 1.48rem;
+  }
+  .tag-hint {
+    font-size: 0.7rem;
+    margin-bottom: 10px;
+  }
+  .tag-btn {
+    padding: 8px 12px;
+    font-size: 0.8rem;
+  }
+  .bouquet-giant-ribbon {
+    width: 104px;
   }
 }

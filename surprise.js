@@ -1,6 +1,6 @@
 // ==========================================================================
 // SURPRISE.JS — Fairytale Scrapbook Multi-Scene Interactive Script
-// Menggunakan Anime.js untuk animasi halus, ringan, dan bebas emoji
+// Menggunakan Anime.js, Push Notification WA di Atas Layar, & Audio Ducking
 // ==========================================================================
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -63,7 +63,149 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ------------------------------------------------------------------------
-  // 2. MANAJEMEN SCENE (PILIHAN MENU, SURAT, PHOTOBOOTH, KUIS)
+  // 2. AUDIO LENGKAP: MUSIK LATAR & SOUND EFFECT YIPPIE (1X PLAY + DUCKING)
+  // ------------------------------------------------------------------------
+  const surpriseAudio = document.getElementById('surpriseAudio');
+  const yippieAudio = document.getElementById('yippieAudio');
+  const musicToggleBtn = document.getElementById('musicToggleBtn');
+  let isAudioPlaying = false;
+  let duckRestoreTimer = null;
+
+  function restoreBgVolume() {
+    if (duckRestoreTimer) {
+      clearTimeout(duckRestoreTimer);
+      duckRestoreTimer = null;
+    }
+    if (surpriseAudio) {
+      surpriseAudio.volume = 1.0;
+    }
+  }
+
+  function playYippieOnce() {
+    if (!yippieAudio) return;
+
+    yippieAudio.loop = false;
+    yippieAudio.pause();
+    yippieAudio.currentTime = 0;
+
+    // Kecilkan volume musik latar sementara selama yippie berbunyi
+    if (surpriseAudio && isAudioPlaying) {
+      surpriseAudio.volume = 0.2;
+    }
+
+    if (duckRestoreTimer) clearTimeout(duckRestoreTimer);
+
+    yippieAudio.play().then(() => {
+      // Fallback pengembalian volume maksimal 10.5 detik
+      duckRestoreTimer = setTimeout(restoreBgVolume, 10500);
+    }).catch(() => {
+      // Jika assets/audio/yippie.mp3 belum dimasukkan, langsung pulihkan volume
+      restoreBgVolume();
+    });
+  }
+
+  function stopYippie() {
+    if (yippieAudio) {
+      yippieAudio.pause();
+      yippieAudio.currentTime = 0;
+    }
+    restoreBgVolume();
+  }
+
+  if (yippieAudio) {
+    yippieAudio.addEventListener('ended', restoreBgVolume);
+  }
+
+  if (musicToggleBtn && surpriseAudio) {
+    const startAudioOnFirstTouch = () => {
+      if (!isAudioPlaying) {
+        surpriseAudio.play().then(() => {
+          isAudioPlaying = true;
+          musicToggleBtn.classList.add('playing');
+        }).catch(() => {
+          // Autoplay dicegah browser
+        });
+      }
+      document.removeEventListener('click', startAudioOnFirstTouch);
+      document.removeEventListener('touchstart', startAudioOnFirstTouch);
+    };
+
+    document.addEventListener('click', startAudioOnFirstTouch, { once: true });
+    document.addEventListener('touchstart', startAudioOnFirstTouch, { once: true });
+
+    musicToggleBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (isAudioPlaying) {
+        surpriseAudio.pause();
+        isAudioPlaying = false;
+        musicToggleBtn.classList.remove('playing');
+      } else {
+        surpriseAudio.play().then(() => {
+          isAudioPlaying = true;
+          musicToggleBtn.classList.add('playing');
+        }).catch(() => {
+          isAudioPlaying = false;
+        });
+      }
+    });
+
+    surpriseAudio.addEventListener('pause', () => {
+      isAudioPlaying = false;
+      musicToggleBtn.classList.remove('playing');
+    });
+
+    surpriseAudio.addEventListener('play', () => {
+      isAudioPlaying = true;
+      musicToggleBtn.classList.add('playing');
+    });
+  }
+
+  // ------------------------------------------------------------------------
+  // 3. NOTIFIKASI WHATSAPP MELAYANG DI PALING ATAS HALAMAN
+  // ------------------------------------------------------------------------
+  const waNotificationCard = document.getElementById('waNotificationCard');
+
+  function showWaTopBanner() {
+    if (!waNotificationCard) return;
+    waNotificationCard.classList.add('visible');
+
+    if (typeof anime !== 'undefined') {
+      anime.remove(waNotificationCard);
+      anime({
+        targets: waNotificationCard,
+        translateY: [-150, 0],
+        opacity: [0, 1],
+        easing: 'easeOutElastic(1, .75)',
+        duration: 950,
+        delay: 500
+      });
+    } else {
+      waNotificationCard.style.opacity = '1';
+      waNotificationCard.style.transform = 'translateY(0)';
+    }
+  }
+
+  function hideWaTopBanner() {
+    if (!waNotificationCard) return;
+    waNotificationCard.classList.remove('visible');
+
+    if (typeof anime !== 'undefined') {
+      anime.remove(waNotificationCard);
+      anime({
+        targets: waNotificationCard,
+        translateY: -150,
+        opacity: 0,
+        easing: 'easeInQuad',
+        duration: 280
+      });
+    } else {
+      waNotificationCard.style.opacity = '0';
+      waNotificationCard.style.transform = 'translateY(-150px)';
+    }
+  }
+
+  // ------------------------------------------------------------------------
+  // 4. MANAJEMEN SCENE (PILIHAN MENU, SURAT, PHOTOBOOTH, KUIS)
   // ------------------------------------------------------------------------
   const scenes = {
     menu: document.getElementById('sceneMenu'),
@@ -77,12 +219,15 @@ document.addEventListener('DOMContentLoaded', () => {
       if (scene) scene.classList.remove('active');
     });
 
+    // Sembunyikan banner WA & hentikan sound effect saat berpindah scene
+    hideWaTopBanner();
+    stopYippie();
+
     const target = scenes[targetSceneKey];
     if (target) {
       target.classList.add('active');
       window.scrollTo({ top: 0, behavior: 'smooth' });
 
-      // Transisi Masuk Halus dengan Anime.js
       if (typeof anime !== 'undefined') {
         anime({
           targets: target,
@@ -95,21 +240,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Tombol Menu Pilihan Hadiah
   const btnOpenLetter = document.getElementById('btnOpenLetter');
   const btnOpenPhotobooth = document.getElementById('btnOpenPhotobooth');
   const btnOpenQuiz = document.getElementById('btnOpenQuiz');
 
   if (btnOpenLetter) {
-    btnOpenLetter.addEventListener('click', () => {
-      switchScene('letter');
-    });
+    btnOpenLetter.addEventListener('click', () => switchScene('letter'));
   }
 
   if (btnOpenPhotobooth) {
-    btnOpenPhotobooth.addEventListener('click', () => {
-      switchScene('photobooth');
-    });
+    btnOpenPhotobooth.addEventListener('click', () => switchScene('photobooth'));
   }
 
   if (btnOpenQuiz) {
@@ -119,7 +259,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Tombol Kembali ke Menu Pilihan Hadiah (Back Buttons)
   const backToMenuButtons = document.querySelectorAll('.btn-back-to-menu');
   backToMenuButtons.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -129,7 +268,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ------------------------------------------------------------------------
-  // 3. INTERAKSI SURAT CINTA (TARIK SURAT DENGAN ANIME.JS)
+  // 5. INTERAKSI SURAT CINTA (TARIK SURAT DENGAN ANIME.JS)
   // ------------------------------------------------------------------------
   const letterSheetContainer = document.getElementById('letterSheetContainer');
   const clickToReadPill = document.getElementById('clickToReadPill');
@@ -178,7 +317,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ------------------------------------------------------------------------
-  // 4. INTERAKSI KUIS HADIAH ([ ✓ ] SUKA vs [ ✗ ] SALAH PENCET)
+  // 6. INTERAKSI KUIS HADIAH ([ ✓ ] SUKA vs [ ✗ ] SALAH PENCET)
   // ------------------------------------------------------------------------
   const quizSteps = {
     quizStepQuestion: document.getElementById('quizStepQuestion'),
@@ -190,6 +329,12 @@ document.addEventListener('DOMContentLoaded', () => {
     Object.values(quizSteps).forEach(step => {
       if (step) step.classList.remove('active');
     });
+
+    if (stepId !== 'quizStepCelebration') {
+      hideWaTopBanner();
+      stopYippie();
+    }
+
     const activeStep = quizSteps[stepId];
     if (activeStep) {
       activeStep.classList.add('active');
@@ -214,10 +359,9 @@ document.addEventListener('DOMContentLoaded', () => {
   if (btnQuizNo) {
     btnQuizNo.addEventListener('click', () => {
       showQuizStep('quizStepWrong');
-      // Efek Goncang Lucu dengan Anime.js
       if (typeof anime !== 'undefined') {
         anime({
-          targets: '.wrong-card',
+          targets: '.wrong-paper-stage',
           translateX: [-10, 10, -8, 8, -4, 4, 0],
           easing: 'easeInOutSine',
           duration: 550
@@ -235,19 +379,9 @@ document.addEventListener('DOMContentLoaded', () => {
   if (btnQuizYes) {
     btnQuizYes.addEventListener('click', () => {
       showQuizStep('quizStepCelebration');
+      playYippieOnce();
       spawnCelebrationVectorHearts();
-
-      // Animasi Pop-up WhatsApp Masuk Halus
-      if (typeof anime !== 'undefined') {
-        anime({
-          targets: '#waNotificationCard',
-          translateY: [40, 0],
-          opacity: [0, 1],
-          easing: 'easeOutElastic(1, .8)',
-          duration: 900,
-          delay: 350
-        });
-      }
+      showWaTopBanner();
     });
   }
 
@@ -287,57 +421,6 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => svg.remove(), 2500);
       }
     }
-  }
-
-  // ------------------------------------------------------------------------
-  // 5. FLOATING MUSIC TOGGLE AUDIO
-  // ------------------------------------------------------------------------
-  const surpriseAudio = document.getElementById('surpriseAudio');
-  const musicToggleBtn = document.getElementById('musicToggleBtn');
-  let isAudioPlaying = false;
-
-  if (musicToggleBtn && surpriseAudio) {
-    const startAudioOnFirstTouch = () => {
-      if (!isAudioPlaying) {
-        surpriseAudio.play().then(() => {
-          isAudioPlaying = true;
-          musicToggleBtn.classList.add('playing');
-        }).catch(() => {
-          // Autoplay dicegah browser
-        });
-      }
-      document.removeEventListener('click', startAudioOnFirstTouch);
-      document.removeEventListener('touchstart', startAudioOnFirstTouch);
-    };
-
-    document.addEventListener('click', startAudioOnFirstTouch, { once: true });
-    document.addEventListener('touchstart', startAudioOnFirstTouch, { once: true });
-
-    musicToggleBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      if (isAudioPlaying) {
-        surpriseAudio.pause();
-        isAudioPlaying = false;
-        musicToggleBtn.classList.remove('playing');
-      } else {
-        surpriseAudio.play().then(() => {
-          isAudioPlaying = true;
-          musicToggleBtn.classList.add('playing');
-        }).catch(() => {
-          isAudioPlaying = false;
-        });
-      }
-    });
-
-    surpriseAudio.addEventListener('pause', () => {
-      isAudioPlaying = false;
-      musicToggleBtn.classList.remove('playing');
-    });
-
-    surpriseAudio.addEventListener('play', () => {
-      isAudioPlaying = true;
-      musicToggleBtn.classList.add('playing');
-    });
   }
 
 });

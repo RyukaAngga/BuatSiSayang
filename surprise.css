@@ -217,11 +217,11 @@
 }
 
 /* ==========================================================================
-   SCENE 1: MENU PILIHAN HADIAH ("PILIH YA SAYANG") — NAIK LEBIH KE ATAS
+   SCENE 1: MENU PILIHAN HADIAH ("PILIH YA SAYANG") — AGAK KE BAWAH & RAPAT
    ========================================================================== */
 #sceneMenu {
-  justify-content: flex-start;
-  padding-top: 13vh;
+  justify-content: center;
+  padding-top: 10vh;
 }
 
 .menu-main-content {
@@ -235,7 +235,7 @@
 
 .menu-header {
   text-align: center;
-  margin-bottom: 24px;
+  margin-bottom: 6px;
   z-index: 5;
 }
 
@@ -847,27 +847,40 @@
   transform: scale(1.04);
 }
 
-/* STEP 3: Selebrasi Hadiah di Atas white-paper.webp (Mika Pegang Buket Biru + Pita Besar) */
+/* STEP 3: Selebrasi Hadiah di Atas white-paper.webp (Mika Besar Pegang Buket Biru + Pita Besar) */
 .celebration-paper-stage {
   position: relative;
-  width: 95%;
-  max-width: 390px;
+  width: 96%;
+  max-width: 400px;
   aspect-ratio: 420 / 560;
   display: flex;
   align-items: center;
   justify-content: center;
   transform: rotate(-1deg);
   z-index: 10;
+  margin-top: 38px;
+}
+
+/* Tombol Kembali di Pojok Kiri Atas Kertas (Tidak Tertutup Banner WA) */
+.top-nav-back.celebration-paper-back {
+  top: 16px;
+  left: 16px;
+  z-index: 35;
+}
+
+/* Sembunyikan tombol kembali luar saat berada di step selebrasi agar tidak dobel & tidak tertutup WA */
+#sceneQuiz.celebration-active > .btn-back-to-menu {
+  display: none;
 }
 
 .celebration-hero {
   position: relative;
   z-index: 5;
-  width: 86%;
+  width: 92%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 8% 2%;
+  padding: 6% 0;
 }
 
 .celebration-speech-bubble {
@@ -878,18 +891,20 @@
   font-weight: 700;
   font-size: 0.86rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.16);
-  margin-bottom: 6px;
+  margin-bottom: 2px;
+  z-index: 10;
 }
 
-/* Komposit Karakter Mika + Buket Biru Menutupi Bunga Merah + Pita Sangat Besar */
+/* Komposit Karakter Mika Besar + Buket Biru Menutupi Bunga Merah + Pita Sangat Besar */
 .mika-bouquet-composite {
   position: relative;
-  width: 100%;
-  max-width: 280px;
+  width: 114%;
+  max-width: 355px;
   aspect-ratio: 1 / 1;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: -14px 0 -18px;
 }
 
 .mika-char-img {
@@ -922,9 +937,9 @@
 /* Pita Sangat Besar Menempel di Buket Biru */
 .bouquet-giant-ribbon {
   position: absolute;
-  width: 122px;
+  width: 135px;
   height: auto;
-  bottom: -22px;
+  bottom: -24px;
   left: 52%;
   transform: translateX(-50%) rotate(-10deg);
   z-index: 8;

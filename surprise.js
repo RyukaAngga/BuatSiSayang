@@ -6,11 +6,63 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   // ------------------------------------------------------------------------
-  // 1. INISIALISASI ANIME.JS: ANIMASI BACKGROUND & KADO DONGENG
+  // 1. INISIALISASI ANIME.JS: STOP-MOTION ENTRANCE (PATAH-PATAH) & DONGENG
   // ------------------------------------------------------------------------
   if (typeof anime !== 'undefined') {
+
+    // Animasi Masuk Halaman Surprise: Stop-motion "patah-patah" (steps) dari kiri & kanan
+    const entranceTl = anime.timeline({
+      easing: 'steps(6)',
+      duration: 650
+    });
+
+    entranceTl
+      .add({
+        targets: '.scene-flower-tl',
+        translateX: [-120, 0],
+        opacity: [0, 1]
+      }, 0)
+      .add({
+        targets: ['.corner-paper-tr', '.scene-flower-br'],
+        translateX: [120, 0],
+        opacity: [0, 1]
+      }, 60)
+      .add({
+        targets: '.fairytale-bird-left',
+        translateX: [-140, 0],
+        opacity: [0, 1]
+      }, 120)
+      .add({
+        targets: '.fairytale-bird-right',
+        translateX: [140, 0],
+        opacity: [0, 1]
+      }, 120)
+      .add({
+        targets: '.menu-title',
+        translateY: [-35, 0],
+        opacity: [0, 1],
+        easing: 'steps(5)',
+        duration: 450
+      }, 160)
+      .add({
+        targets: '.gift-envelope',
+        translateX: [-110, 0],
+        opacity: [0, 1]
+      }, 220)
+      .add({
+        targets: '.gift-bouquet',
+        translateX: [110, 0],
+        opacity: [0, 1]
+      }, 220)
+      .add({
+        targets: '.gift-photobooth',
+        translateY: [60, 0],
+        scale: [0.7, 1],
+        opacity: [0, 1],
+        easing: 'steps(5)'
+      }, 260);
     
-    // Animasi Goyang Kanan-Kiri Kado (Pendulum Fairytale Sway)
+    // Animasi Goyang Kanan-Kiri Kado (Pendulum Fairytale Sway) setelah entrance
     anime({
       targets: '.fairytale-gift-item',
       rotate: function(el, i) {
@@ -22,6 +74,9 @@ document.addEventListener('DOMContentLoaded', () => {
       direction: 'alternate',
       loop: true,
       easing: 'easeInOutSine',
+      delay: function(el, i) {
+        return 850 + i * 250;
+      },
       duration: function(el, i) {
         return 2800 + i * 400;
       }
@@ -36,6 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
       direction: 'alternate',
       loop: true,
       easing: 'easeInOutQuad',
+      delay: 750,
       duration: 3800
     });
 
@@ -47,6 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
       direction: 'alternate',
       loop: true,
       easing: 'easeInOutQuad',
+      delay: 750,
       duration: 4200
     });
 
@@ -329,6 +386,10 @@ document.addEventListener('DOMContentLoaded', () => {
     Object.values(quizSteps).forEach(step => {
       if (step) step.classList.remove('active');
     });
+
+    if (scenes.quiz) {
+      scenes.quiz.classList.toggle('celebration-active', stepId === 'quizStepCelebration');
+    }
 
     if (stepId !== 'quizStepCelebration') {
       hideWaTopBanner();

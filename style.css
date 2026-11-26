@@ -308,6 +308,14 @@ html, body {
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.music-section img {
+  -webkit-user-drag: none;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .music-section::before {
@@ -499,6 +507,9 @@ html, body {
   z-index: 8;
   margin-bottom: -46px; /* Menyelip anggun di balik Spotify card */
   transition: transform 0.3s ease;
+  pointer-events: auto;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .vinyl-container:hover {
@@ -549,7 +560,7 @@ html, body {
   to { transform: rotate(360deg); }
 }
 
-/* Card Spotify dengan Frame Pink */
+/* Card Spotify dengan Frame Pink (Non-selectable, Non-draggable, Non-clickable) */
 .spotify-card-wrapper {
   position: relative;
   width: 100%;
@@ -558,6 +569,13 @@ html, body {
   border-radius: 8px;
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
   z-index: 14;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-drag: none;
+  pointer-events: none;
+  cursor: default;
 }
 
 /* PUSHPIN BESAR di Pojok Kanan Atas Spotify Card (Persis di Foto Referensi) */
@@ -586,6 +604,9 @@ html, body {
   display: flex;
   flex-direction: column;
   gap: 8px;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
 }
 
 .spotify-header {

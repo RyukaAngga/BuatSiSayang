@@ -220,10 +220,16 @@ document.addEventListener('DOMContentLoaded', () => {
     quiz: document.getElementById('sceneQuiz')
   };
 
+  const surpriseApp = document.getElementById('surpriseApp');
+
   function switchScene(targetSceneKey) {
     Object.values(scenes).forEach(scene => {
       if (scene) scene.classList.remove('active');
     });
+
+    if (surpriseApp) {
+      surpriseApp.classList.toggle('photobooth-active', targetSceneKey === 'photobooth');
+    }
 
     // Sembunyikan banner WA & hentikan sound effect saat berpindah scene
     hideWaTopBanner();

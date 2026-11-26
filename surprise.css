@@ -709,112 +709,148 @@
 }
 
 /* ==========================================================================
-   SCENE 2B: PHOTOBOOTH KENANGAN (ALAS white-paper.webp)
+   SCENE 2B: PHOTOBOOTH KENANGAN (SPLIT RED ENVELOPE + RAJUT PUTIH, SCROLLABLE)
    ========================================================================== */
-.photobooth-header {
-  text-align: center;
-  margin-bottom: 12px;
-  z-index: 5;
+#scenePhotobooth {
+  padding: 0;
+  min-height: 100vh;
+  min-height: 100dvh;
+  height: auto;
+  justify-content: flex-start;
+  align-items: stretch;
+  overflow: visible;
 }
 
-.photobooth-title {
-  font-family: var(--font-handwriting, 'Caveat', cursive);
-  font-size: 2.3rem;
-  color: #fffdfa;
-  text-shadow: 2px 3px 6px rgba(0, 0, 0, 0.4);
-  line-height: 1.1;
-  margin: 0 0 4px;
+/* Sembunyikan background awan/burung saat masuk ke Photobooth agar tampil bersih sesuai referensi */
+.surprise-container.photobooth-active .fairytale-bg-layer {
+  display: none;
 }
 
-.photobooth-subtitle {
-  font-size: 0.78rem;
-  color: #faedd9;
-  opacity: 0.9;
-  max-width: 280px;
-  margin: 0 auto;
-}
-
-.photobooth-paper-stage {
+.photobooth-split-layout {
   position: relative;
-  width: 94%;
-  max-width: 380px;
-  aspect-ratio: 420 / 540;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  transform: rotate(-1.2deg);
-  z-index: 10;
+  flex-direction: row;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
 }
 
-.photobooth-paper-inner {
+/* Kolom Kiri: Latar Red Envelope + Bunga Besar */
+.photobooth-left-red {
   position: relative;
-  z-index: 5;
-  width: 82%;
+  width: 28%;
+  flex-shrink: 0;
+  background-image: url('assets/backgrounds/redenvelope.webp');
+  background-size: 100% auto;
+  background-repeat: repeat-y;
+  background-position: top left;
+  z-index: 4;
+  overflow: visible;
+}
+
+.photobooth-flowers-stack {
+  position: relative;
+  width: 122%;
+  margin-left: -10%;
+  padding-top: 64px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 12% 4% 10%;
-}
-
-.photobooth-ribbon {
-  position: absolute;
-  top: -22px;
-  right: -20px;
-  width: 115px;
-  height: 115px;
-  z-index: 22;
+  gap: 0;
   pointer-events: none;
 }
 
-.photobooth-ribbon img {
-  width: 100%;
-  height: auto;
-  filter: drop-shadow(3px 8px 12px rgba(0, 0, 0, 0.4));
-}
-
-.photobooth-strip-wrap {
-  width: 100%;
-  max-width: 260px;
-  margin: 4px 0 16px;
-  transform: rotate(1deg);
-}
-
-.photobooth-strip-img {
+.blueflower-cascade {
   width: 100%;
   height: auto;
   display: block;
-  filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.3));
+  filter: drop-shadow(3px 8px 14px rgba(0, 0, 0, 0.45));
 }
 
-.photobooth-flower {
-  position: absolute;
-  bottom: -18px;
-  left: -18px;
-  width: 92px;
-  height: 92px;
-  z-index: 22;
+.blueflower-second {
+  margin-top: -18%;
+  transform: scaleX(-1);
+}
+
+/* Kolom Kanan: Latar Rajut Putih + Judul + Mesin Photobooth + Strip Panjang */
+.photobooth-right-knitted {
+  position: relative;
+  width: 72%;
+  flex: 1;
+  background-image: url('assets/backgrounds/rajutputih.webp');
+  background-size: 100% auto;
+  background-repeat: repeat-y;
+  background-position: top center;
+  padding: 36px 14px 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 2;
+  box-shadow: inset 4px 0 12px rgba(0, 0, 0, 0.14);
+}
+
+.photobooth-editorial-header {
+  text-align: center;
+  margin-bottom: 18px;
+  z-index: 10;
+}
+
+.pieces-title {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 2.75rem;
+  font-weight: 500;
+  color: #141414;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.our-story-script {
+  font-family: var(--font-cursive, 'Italianno', cursive);
+  font-size: 2.55rem;
+  color: #a81820;
+  line-height: 0.9;
+  margin: -4px 0 0;
+}
+
+/* Mesin Keluarnya Foto + Strip Foto Panjang */
+.photobooth-printer-stage {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.photobooth-out-slot {
+  position: relative;
+  width: 88%;
+  max-width: 260px;
+  margin-bottom: -24%;
+  z-index: 15;
   pointer-events: none;
 }
 
-.photobooth-flower img {
+.photobooth-out-img {
   width: 100%;
   height: auto;
-  filter: drop-shadow(2px 6px 8px rgba(0, 0, 0, 0.3));
+  display: block;
+  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.28));
 }
 
-.photobooth-caption-box {
-  border-top: 1px dashed rgba(139, 24, 32, 0.3);
-  padding-top: 10px;
-  text-align: center;
+.photobooth-strip-emerge {
+  position: relative;
+  width: 76%;
+  max-width: 230px;
+  z-index: 10;
+  transform: rotate(1.5deg);
+  animation: stopMotionFromTop 0.7s steps(6, end) 0.15s backwards;
+}
+
+.photobooth-strip-large {
   width: 100%;
-}
-
-.handwritten-caption {
-  font-family: var(--font-handwriting, 'Caveat', cursive);
-  font-size: 1.25rem;
-  color: #8b1820;
-  font-weight: 700;
-  line-height: 1.3;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.35));
 }
 
 /* ==========================================================================

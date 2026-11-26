@@ -204,7 +204,7 @@
     </section>
 
     <!-- =========================================================================
-         SCENE 2B: PHOTOBOOTH KENANGAN ("PIECES OF OUR STORY") - BERBASIS WHITE-PAPER
+         SCENE 2B: PHOTOBOOTH KENANGAN ("PIECES OF OUR STORY") - SPLIT RED & RAJUT PUTIH
          ========================================================================= -->
     <section class="surprise-scene" id="scenePhotobooth">
       
@@ -216,36 +216,36 @@
         </svg>
       </button>
 
-      <!-- Header Photobooth -->
-      <div class="photobooth-header">
-        <h2 class="photobooth-title">Pieces of our story</h2>
-        <p class="photobooth-subtitle">Setiap senyuman bersamamu adalah bagian favoritku di hidup ini.</p>
-      </div>
-
-      <!-- Alas Kertas Asli (white-paper.webp) Tanpa Kotak CSS -->
-      <div class="photobooth-paper-stage">
-        <img src="assets/backgrounds/white-paper.webp" alt="" class="paper-stage-bg" aria-hidden="true">
-
-        <!-- Pita Merah di Pojok Kanan Atas -->
-        <div class="photobooth-ribbon" aria-hidden="true">
-          <img src="assets/stickers/ribbon.webp" alt="">
-        </div>
-
-        <div class="photobooth-paper-inner">
-          <!-- Strip Photobooth Kenangan Asli -->
-          <div class="photobooth-strip-wrap">
-            <img src="assets/stickers/photobooth.webp" alt="Galeri Kenangan Kita" class="photobooth-strip-img">
-          </div>
-
-          <!-- Catatan Kaki Manis -->
-          <div class="photobooth-caption-box">
-            <p class="handwritten-caption">"Thank you for being the sweetest chapter in my life."</p>
+      <div class="photobooth-split-layout">
+        
+        <!-- Kolom Kiri: Latar Red Envelope + Bunga Besar Memanjang -->
+        <div class="photobooth-left-red" aria-hidden="true">
+          <div class="photobooth-flowers-stack">
+            <img src="assets/stickers/blueflower_envelope.webp" alt="" class="blueflower-cascade">
+            <img src="assets/stickers/blueflower_envelope.webp" alt="" class="blueflower-cascade blueflower-second">
           </div>
         </div>
 
-        <!-- Bunga Pink di Pojok Bawah -->
-        <div class="photobooth-flower" aria-hidden="true">
-          <img src="assets/stickers/pink-flowers.webp" alt="">
+        <!-- Kolom Kanan: Latar Rajut Putih + Judul + Mesin Photobooth Out + Strip Foto Besar -->
+        <div class="photobooth-right-knitted">
+          
+          <header class="photobooth-editorial-header">
+            <h2 class="pieces-title">Pieces of</h2>
+            <p class="our-story-script">our story</p>
+          </header>
+
+          <div class="photobooth-printer-stage">
+            <!-- Slot Keluarnya Kertas Photobooth -->
+            <div class="photobooth-out-slot">
+              <img src="assets/stickers/photobooth_out.webp" alt="" class="photobooth-out-img" aria-hidden="true">
+            </div>
+
+            <!-- Strip Foto Besar (Sementara Menggunakan filmstrip.webp) -->
+            <div class="photobooth-strip-emerge">
+              <img src="assets/stickers/filmstrip.webp" alt="Galeri Kenangan Kita" class="photobooth-strip-large">
+            </div>
+          </div>
+
         </div>
 
       </div>

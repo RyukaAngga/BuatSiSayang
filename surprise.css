@@ -1,5 +1,5 @@
 /* ==========================================================================
-   SURPRISE.CSS — Scrapbook Multi-Scene Interactive Styles
+   SURPRISE.CSS — Fairytale Scrapbook Multi-Scene Interactive Styles
    ========================================================================== */
 
 /* Basis Body & Container */
@@ -33,6 +33,79 @@
   flex-direction: column;
 }
 
+/* ==========================================================================
+   LAPISAN BACKGROUND DONGENG: PINGGIRAN AWAN, BURUNG, & KERTAS SUDUT
+   ========================================================================== */
+.fairytale-bg-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+/* Pinggiran Awan */
+.fairytale-clouds {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.82;
+  mix-blend-mode: screen;
+}
+
+.clouds-img {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  display: block;
+}
+
+/* Burung Dongeng Melayang */
+.fairytale-bird {
+  position: absolute;
+  top: 14%;
+  right: 5%;
+  width: 72px;
+  height: 72px;
+  z-index: 3;
+}
+
+.bird-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(2px 6px 10px rgba(0, 0, 0, 0.35));
+}
+
+/* Sobekan Kertas di Sudut */
+.corner-paper {
+  position: absolute;
+  z-index: 2;
+  opacity: 0.75;
+}
+
+.corner-paper img {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(2px 5px 8px rgba(0, 0, 0, 0.35));
+}
+
+.corner-paper-tr {
+  top: -8px;
+  right: -12px;
+  width: 110px;
+  transform: rotate(10deg);
+}
+
+.corner-paper-bl {
+  bottom: -10px;
+  left: -14px;
+  width: 120px;
+  transform: rotate(-8deg);
+}
+
 /* Floating Audio Toggle Button */
 .music-toggle-float {
   position: fixed;
@@ -41,7 +114,8 @@
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.88);
+  background: rgba(255, 255, 255, 0.9);
+  color: #8b1820;
   border: 2px solid rgba(255, 255, 255, 0.95);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
   display: flex;
@@ -61,9 +135,8 @@
   animation: pulseHint 2s infinite ease-in-out;
 }
 
-.music-icon {
-  font-size: 1.2rem;
-  line-height: 1;
+.music-icon-svg {
+  display: block;
 }
 
 /* Navigasi Back Button (Pojok Kiri Atas) */
@@ -106,13 +179,14 @@
   width: 100%;
   min-height: 100vh;
   min-height: 100dvh;
-  padding: 64px 16px 36px;
+  padding: 68px 16px 36px;
   box-sizing: border-box;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   transform: translateY(12px);
-  transition: opacity 0.4s ease, transform 0.4s ease;
+  position: relative;
+  z-index: 10;
 }
 
 .surprise-scene.active {
@@ -142,10 +216,10 @@
 
 /* ==========================================================================
    SCENE 1: MENU PILIHAN HADIAH ("PILIH YA SAYANG")
-   ========================================================================== */
+   ========================================================================= */
 .menu-header {
   text-align: center;
-  margin-bottom: 22px;
+  margin-bottom: 24px;
   z-index: 5;
 }
 
@@ -164,7 +238,7 @@
 
 .menu-title {
   font-family: var(--font-handwriting, 'Caveat', cursive);
-  font-size: 2.8rem;
+  font-size: 2.9rem;
   color: #fff9f6;
   text-shadow: 2px 3px 8px rgba(0, 0, 0, 0.45);
   line-height: 1.1;
@@ -175,106 +249,88 @@
   font-size: 0.85rem;
   color: #faedd9;
   opacity: 0.92;
-  max-width: 280px;
+  max-width: 290px;
   margin: 0 auto;
   line-height: 1.4;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.35);
 }
 
-/* Grid 3 Kartu Pilihan Hadiah */
-.gift-options-grid {
+/* PILIHAN KADO POLOS (TANPA CARD, HANYA ASET MURNI DENGAN SWAYING KIRI-KANAN) */
+.fairytale-gifts-container {
   width: 100%;
-  max-width: 380px;
+  max-width: 440px;
   display: flex;
-  flex-direction: column;
-  gap: 16px;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-end;
+  gap: 10px;
+  margin: 16px 0 28px;
   z-index: 10;
 }
 
-.gift-card {
-  position: relative;
-  width: 100%;
-  background: #fffdfa;
+.fairytale-gift-item {
+  background: transparent;
   border: none;
-  border-radius: 14px;
-  padding: 14px 18px;
+  outline: none;
+  padding: 0;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 16px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
   cursor: pointer;
-  text-align: left;
-  transition: transform 0.28s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.28s ease;
+  transform-origin: top center;
+  transition: transform 0.25s ease, filter 0.25s ease;
 }
 
-.gift-card:hover {
-  transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
+.fairytale-gift-item:hover {
+  filter: brightness(1.08) drop-shadow(0 10px 18px rgba(0, 0, 0, 0.45));
 }
 
-.gift-card:active {
-  transform: scale(0.97);
+.fairytale-gift-item:active {
+  transform: scale(0.94);
 }
 
-/* Pushpin di Pojok Kiri Kartu */
-.gift-card-pin {
-  position: absolute;
-  top: -12px;
-  left: 12px;
-  width: 38px;
-  height: 38px;
-  pointer-events: none;
-  z-index: 12;
-}
-
-.gift-card-pin img {
-  width: 100%;
-  height: auto;
-  filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.3));
-}
-
-.gift-card-img-wrap {
-  width: 68px;
-  height: 68px;
-  border-radius: 10px;
-  background: #fdf5f0;
+.gift-asset-wrap {
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
-  flex-shrink: 0;
-  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.08);
+  margin-bottom: 8px;
 }
 
-.gift-card-img-wrap img {
-  width: 90%;
-  height: 90%;
-  object-fit: contain;
-  transition: transform 0.3s ease;
+/* Sizing Spesifik Tiap Aset */
+.gift-envelope .gift-pure-img {
+  width: 112px;
+  height: auto;
+  filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.4));
 }
 
-.gift-card:hover .gift-card-img-wrap img {
-  transform: scale(1.1);
+.gift-photobooth .gift-pure-img {
+  width: 95px;
+  height: auto;
+  filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.4));
 }
 
-.gift-card-label {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
+.gift-bouquet .gift-pure-img {
+  width: 110px;
+  height: auto;
+  filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.4));
 }
 
-.gift-title {
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: #1a1a1a;
-  line-height: 1.2;
-}
-
-.gift-tag {
+.gift-pure-title {
   font-family: var(--font-handwriting, 'Caveat', cursive);
-  font-size: 1.1rem;
-  color: #8b1820;
-  font-weight: 600;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #fffdfa;
+  text-shadow: 1px 2px 6px rgba(0, 0, 0, 0.6);
+  line-height: 1.1;
+}
+
+.gift-pure-sub {
+  font-family: var(--font-typewriter, 'Courier Prime', monospace);
+  font-size: 0.68rem;
+  color: #faedd9;
+  opacity: 0.88;
+  letter-spacing: 0.5px;
+  margin-top: 2px;
 }
 
 .menu-bottom-hint {
@@ -282,7 +338,6 @@
   font-size: 0.8rem;
   color: #faedd9;
   opacity: 0.88;
-  margin-top: 24px;
   text-align: center;
   animation: pulseHint 2.4s infinite ease-in-out;
 }
@@ -318,7 +373,7 @@
   max-width: 360px;
   z-index: 5;
   transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1), z-index 0.1s ease;
-  transform: translateY(120px); /* Awalnya menyembul di dalam amplop */
+  transform: translateY(120px);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -334,7 +389,7 @@
 .click-to-read-pill {
   background: #ffffff;
   color: #8b1820;
-  padding: 6px 18px;
+  padding: 7px 18px;
   border-radius: 9999px;
   font-weight: 700;
   font-size: 0.85rem;
@@ -342,6 +397,9 @@
   margin-bottom: -14px;
   z-index: 30;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
   transition: transform 0.2s ease, opacity 0.3s ease;
   animation: pulseHint 2s infinite ease-in-out;
 }
@@ -394,7 +452,6 @@
   -webkit-overflow-scrolling: touch;
 }
 
-/* Scrollbar halus untuk surat */
 .letter-scroll-area::-webkit-scrollbar {
   width: 4px;
 }
@@ -747,14 +804,7 @@
   padding: 24px 20px 26px;
   box-shadow: 0 14px 34px rgba(0, 0, 0, 0.45);
   text-align: center;
-  animation: shakeNotice 0.6s ease;
   z-index: 10;
-}
-
-@keyframes shakeNotice {
-  0%, 100% { transform: translateX(0); }
-  20%, 60% { transform: translateX(-8px) rotate(-2deg); }
-  40%, 80% { transform: translateX(8px) rotate(2deg); }
 }
 
 .sad-cat-wrap {
@@ -849,7 +899,6 @@
   font-size: 0.88rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   margin-bottom: 12px;
-  animation: wobbleSlight 4s infinite ease-in-out;
 }
 
 .celebration-photo-frame {
@@ -911,7 +960,6 @@
   border: 1px solid rgba(0, 0, 0, 0.06);
   cursor: pointer;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
-  animation: slideUpBounce 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
 }
 
 .wa-notification-card:hover {
@@ -921,17 +969,6 @@
 
 .wa-notification-card:active {
   transform: scale(0.98);
-}
-
-@keyframes slideUpBounce {
-  0% {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 .wa-notif-header {
@@ -973,7 +1010,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.1rem;
   flex-shrink: 0;
 }
 
@@ -998,7 +1034,7 @@
   text-overflow: ellipsis;
 }
 
-/* Floating Hearts Effect */
+/* Floating Hearts / Vector Sparkles Effect */
 .floating-hearts-container {
   position: absolute;
   inset: 0;
@@ -1007,21 +1043,12 @@
   z-index: 30;
 }
 
-.floating-heart {
+.floating-vector-heart {
   position: absolute;
-  font-size: 1.4rem;
-  animation: floatUpFade 2.4s ease-in forwards;
-}
-
-@keyframes floatUpFade {
-  0% {
-    opacity: 1;
-    transform: translateY(0) scale(0.6);
-  }
-  100% {
-    opacity: 0;
-    transform: translateY(-220px) scale(1.4) rotate(15deg);
-  }
+  width: 18px;
+  height: 18px;
+  fill: #d32032;
+  opacity: 0.85;
 }
 
 /* ==========================================================================
@@ -1029,10 +1056,16 @@
    ========================================================================== */
 @media (max-width: 380px) {
   .menu-title {
-    font-size: 2.3rem;
+    font-size: 2.4rem;
   }
-  .gift-title {
-    font-size: 1rem;
+  .gift-envelope .gift-pure-img {
+    width: 95px;
+  }
+  .gift-photobooth .gift-pure-img {
+    width: 82px;
+  }
+  .gift-bouquet .gift-pure-img {
+    width: 95px;
   }
   .letter-salutation {
     font-size: 1.8rem;

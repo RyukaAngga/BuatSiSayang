@@ -138,7 +138,7 @@
     </section>
 
     <!-- =========================================================================
-         SCENE 2A: SURAT CINTA INTERAKTIF ("DEAR MY LOVE")
+         SCENE 2A: SURAT CINTA INTERAKTIF (ENVELOPE -> OPEN ENVELOPE + KERTAS + TYPEWRITER)
          ========================================================================= -->
     <section class="surprise-scene" id="sceneLetter">
       
@@ -151,67 +151,40 @@
       </button>
 
       <div class="letter-stage" id="letterStage">
-        
-        <!-- Pucuk Surat yang Menyembul di Awal (Sebelum Ditarik) -->
-        <div class="letter-sheet-container" id="letterSheetContainer">
-          
-          <!-- Tombol / Ajakan Tarik Surat -->
-          <div class="click-to-read-pill" id="clickToReadPill">
-            <span>klik to read</span>
-            <svg class="pill-arrow-svg" viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
-              <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
-            </svg>
-          </div>
 
-          <!-- Kertas Lembar Surat Cinta -->
-          <div class="letter-paper" id="letterPaper">
-            
-            <!-- Stempel Hati di Sudut Surat -->
-            <div class="letter-stamp-heart">
-              <img src="assets/stickers/kiss-2.webp" alt="" aria-hidden="true">
-            </div>
-
-            <div class="letter-scroll-area">
-              <h2 class="letter-salutation">Dear My Love,</h2>
-              
-              <p class="letter-lead">
-                Selamat ulang tahun yang paling spesial buat orang yang paling aku sayang dan paling berharga di hidupku.
-              </p>
-
-              <p class="letter-para">
-                Terima kasih banyak ya sudah lahir ke dunia ini dan memilih untuk hadir di samping aku. Bersama kamu, setiap hari yang biasa selalu berubah jadi momen yang begitu manis, hangat, dan penuh tawa.
-              </p>
-
-              <p class="letter-para">
-                Di usiamu yang baru ini, doa tulusku selalu mengiringi setiap langkahmu: semoga kamu selalu diberikan kesehatan, dilindungi dan dimudahkan dalam segala urusanmu, dijauhkan dari segala hal yang memberatkan hatimu, dan semoga senyum cantik yang selalu bikin aku tenang itu tidak pernah pudar.
-              </p>
-
-              <p class="letter-para">
-                Terima kasih sudah selalu jadi tempat pulang ternyaman, pendengar terbaik, dan alasan di balik rasa syukurku setiap hari. Apapun yang ada di depan nanti, kamu tidak pernah sendirian—aku akan selalu ada di sini untuk menggenggam tanganmu dan mendukung impianmu.
-              </p>
-
-              <p class="letter-closing">
-                I love you more than words could ever describe. Today, tomorrow, and forever and always.
-              </p>
-
-              <div class="letter-signature">
-                <span class="sig-with">With all my love,</span>
-                <span class="sig-name">Ryuka Angga</span>
-              </div>
-            </div>
-
-          </div>
-
-          <!-- Dua Tangan Halftone Memegang Kertas Surat (Muncul Saat Ditarik) -->
-          <div class="letter-holding-hands" id="holdingHands" aria-hidden="true">
-            <img src="assets/stickers/hands-halftone.webp" alt="" class="hands-img">
-          </div>
-
+        <!-- STATE 1: HANYA ENVELOPE BIASA + TULISAN BERSAMBUNG "klik untuk membuka" (TANPA PILL) -->
+        <div class="letter-closed-view active" id="letterClosedView">
+          <button type="button" class="letter-closed-btn" id="btnOpenClosedEnvelope" aria-label="Buka Surat Cinta">
+            <img src="assets/stickers/envelope.webp" alt="Amplop Surat Cinta" class="letter-closed-img">
+          </button>
+          <p class="letter-open-cursive" id="letterOpenCursive">klik untuk membuka</p>
         </div>
 
-        <!-- Amplop Surat Bagian Depan (Cover Kantong) -->
-        <div class="letter-envelope-pocket" id="envelopePocket">
-          <img src="assets/stickers/open_evelope.webp" alt="Amplop Surat" class="envelope-pocket-img">
+        <!-- STATE 2: OPEN ENVELOPE + DITIBAN ASET KERTAS + TEKS MENULIS KIRI KE KANAN -->
+        <div class="letter-opened-view" id="letterOpenedView">
+          <div class="open-envelope-wrapper">
+            <img src="assets/stickers/open_evelope.webp" alt="Amplop Terbuka" class="open-envelope-base-img">
+
+            <!-- Aset Kertas Surat Menutupi Kertas Bawaan Open Envelope -->
+            <div class="letter-paper-overlay" id="letterPaperOverlay">
+              <img src="assets/backgrounds/white-paper.webp" alt="" class="letter-paper-bg-img" aria-hidden="true">
+
+              <div class="letter-stamp-heart">
+                <img src="assets/stickers/kiss-2.webp" alt="" aria-hidden="true">
+              </div>
+
+              <!-- Area Teks dengan Ukuran Terkunci Sesuai Kertas (Animasi Menulis Kiri ke Kanan) -->
+              <div class="letter-written-content" id="letterWrittenContent" aria-live="polite">
+                <h2 class="letter-salutation" data-type="Dear My Love,"></h2>
+                <p class="letter-para" data-type="Selamat ulang tahun buat orang paling berharga di hidupku. Terima kasih sudah hadir dan bikin hari-hariku selalu terasa hangat."></p>
+                <p class="letter-para" data-type="Semoga kamu selalu sehat, bahagia, dimudahkan segala langkahnya, dan senyum manismu itu tidak pernah pudar. Aku selalu ada buat kamu."></p>
+                <p class="letter-closing" data-type="I love you today, tomorrow, and forever."></p>
+                <div class="letter-signature">
+                  <span class="sig-name" data-type="- Ryuka Angga"></span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
       </div>

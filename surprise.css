@@ -217,11 +217,97 @@
 }
 
 /* ==========================================================================
-   SCENE 1: MENU PILIHAN HADIAH ("PILIH YA SAYANG") — AGAK KE BAWAH & RAPAT
+   STOP-MOTION PUZZLE ENTRANCE ANIMATIONS (PATAH-PATAH KIRI & KANAN)
+   ========================================================================== */
+@keyframes stopMotionFromLeft {
+  0% { opacity: 0; transform: translateX(-160px) rotate(-10deg); }
+  1% { opacity: 1; transform: translateX(-140px) rotate(-8deg); }
+  100% { opacity: 1; transform: translateX(0) rotate(0deg); }
+}
+
+@keyframes stopMotionFromLeftFlipped {
+  0% { opacity: 0; transform: translateX(-160px) scaleX(-1); }
+  1% { opacity: 1; transform: translateX(-140px) scaleX(-1); }
+  100% { opacity: 1; transform: translateX(0) scaleX(-1); }
+}
+
+@keyframes stopMotionFromRight {
+  0% { opacity: 0; transform: translateX(160px) rotate(10deg); }
+  1% { opacity: 1; transform: translateX(140px) rotate(8deg); }
+  100% { opacity: 1; transform: translateX(0) rotate(0deg); }
+}
+
+@keyframes stopMotionFromTop {
+  0% { opacity: 0; transform: translateY(-60px) scale(0.85); }
+  1% { opacity: 1; transform: translateY(-48px) scale(0.9); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes stopMotionFromBottom {
+  0% { opacity: 0; transform: translateY(90px) scale(0.85); }
+  1% { opacity: 1; transform: translateY(72px) scale(0.9); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes stopMotionClouds {
+  0% { opacity: 0; transform: scale(1.12); }
+  1% { opacity: 0.82; transform: scale(1.09); }
+  100% { opacity: 0.82; transform: scale(1); }
+}
+
+@keyframes stopMotionPop {
+  0% { opacity: 0; transform: scale(0.65) translateY(24px); }
+  1% { opacity: 1; transform: scale(0.75) translateY(18px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* Terapkan Stop-Motion Puzzle saat Halaman Pertama Dibuka (Polos -> Satu per Satu Rapi) */
+.fairytale-clouds {
+  animation: stopMotionClouds 0.55s steps(4, end) 0.1s backwards;
+}
+
+.scene-flower-tl {
+  animation: stopMotionFromLeft 0.55s steps(5, end) 0.18s backwards;
+}
+
+.corner-paper-tr {
+  animation: stopMotionFromRight 0.55s steps(5, end) 0.22s backwards;
+}
+
+.scene-flower-br {
+  animation: stopMotionFromRight 0.55s steps(5, end) 0.26s backwards;
+}
+
+.fairytale-bird-left {
+  animation: stopMotionFromLeftFlipped 0.6s steps(6, end) 0.34s backwards;
+}
+
+.fairytale-bird-right {
+  animation: stopMotionFromRight 0.6s steps(6, end) 0.34s backwards;
+}
+
+.menu-header {
+  animation: stopMotionFromTop 0.45s steps(4, end) 0.42s backwards;
+}
+
+.gift-envelope {
+  animation: stopMotionFromLeft 0.55s steps(5, end) 0.5s backwards;
+}
+
+.gift-photobooth {
+  animation: stopMotionFromBottom 0.55s steps(5, end) 0.56s backwards;
+}
+
+.gift-bouquet {
+  animation: stopMotionFromRight 0.55s steps(5, end) 0.62s backwards;
+}
+
+/* ==========================================================================
+   SCENE 1: MENU PILIHAN HADIAH ("PILIH YA SAYANG") — RAPI & SEJAJAR
    ========================================================================== */
 #sceneMenu {
   justify-content: center;
-  padding-top: 10vh;
+  padding-top: 8vh;
 }
 
 .menu-main-content {
@@ -235,7 +321,7 @@
 
 .menu-header {
   text-align: center;
-  margin-bottom: 6px;
+  margin-bottom: 10px;
   z-index: 5;
 }
 
@@ -245,30 +331,20 @@
   color: #fff9f6;
   text-shadow: 1px 2px 6px rgba(0, 0, 0, 0.45);
   line-height: 1.15;
-  margin: 0 0 4px;
+  margin: 0;
   letter-spacing: -0.01em;
 }
 
-.menu-subtitle {
-  font-size: 0.78rem;
-  color: #faedd9;
-  opacity: 0.88;
-  max-width: 270px;
-  margin: 0 auto;
-  line-height: 1.35;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
-}
-
-/* PILIHAN KADO POLOS (TANPA CARD, HANYA ASET MURNI DENGAN SWAYING KIRI-KANAN) */
+/* PILIHAN KADO POLOS SEJAJAR RAPI */
 .fairytale-gifts-container {
   width: 100%;
   max-width: 440px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  align-items: flex-end;
-  gap: 12px;
-  margin: 8px 0 0;
+  align-items: center;
+  gap: 8px;
+  margin: 4px 0 0;
   z-index: 10;
 }
 
@@ -277,12 +353,13 @@
   border: none;
   outline: none;
   padding: 0;
+  flex: 1 1 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   cursor: pointer;
-  transform-origin: top center;
-  transition: transform 0.25s ease, filter 0.25s ease;
+  transform-origin: center center;
+  transition: filter 0.25s ease;
 }
 
 .fairytale-gift-item:hover {
@@ -294,10 +371,12 @@
 }
 
 .gift-asset-wrap {
+  width: 100%;
+  height: 105px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 6px;
+  margin-bottom: 4px;
 }
 
 .gift-envelope .gift-pure-img {
@@ -307,7 +386,7 @@
 }
 
 .gift-photobooth .gift-pure-img {
-  width: 102px;
+  width: 118px;
   height: auto;
   filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.4));
 }
@@ -337,7 +416,7 @@
 }
 
 /* ==========================================================================
-   SCENE 2A: SURAT CINTA INTERAKTIF ("DEAR MY LOVE")
+   SCENE 2A: SURAT CINTA (ENVELOPE -> OPEN ENVELOPE + KERTAS + TYPEWRITER)
    ========================================================================== */
 #sceneLetter {
   position: relative;
@@ -351,82 +430,132 @@
 .letter-stage {
   position: relative;
   width: 100%;
-  max-width: 400px;
-  height: 82vh;
+  max-width: 420px;
+  min-height: 78vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-end;
-  padding-bottom: 20px;
+  justify-content: center;
 }
 
-.letter-sheet-container {
-  position: relative;
-  width: 92%;
-  max-width: 360px;
-  z-index: 5;
-  transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1), z-index 0.1s ease;
-  transform: translateY(120px);
-  display: flex;
+/* STATE 1: Amplop Tertutup Saja + Tulisan Bersambung */
+.letter-closed-view {
+  display: none;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 
-.letter-sheet-container.pulled {
-  transform: translateY(-80px);
-  z-index: 25;
+.letter-closed-view.active {
+  display: flex;
+  animation: stopMotionPop 0.45s steps(4, end) backwards;
 }
 
-.click-to-read-pill {
-  background: #ffffff;
-  color: #8b1820;
-  padding: 7px 18px;
-  border-radius: 9999px;
-  font-weight: 700;
-  font-size: 0.85rem;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
-  margin-bottom: -14px;
-  z-index: 30;
+.letter-closed-btn {
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 0;
+  width: 72%;
+  max-width: 280px;
   cursor: pointer;
-  display: flex;
+  animation: envelopeSwayScale 3.2s ease-in-out infinite;
+}
+
+.letter-closed-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 12px 26px rgba(0, 0, 0, 0.42));
+}
+
+@keyframes envelopeSwayScale {
+  0%, 100% {
+    transform: rotate(-3deg) scale(1);
+  }
+  50% {
+    transform: rotate(3deg) scale(1.05);
+  }
+}
+
+.letter-open-cursive {
+  font-family: var(--font-cursive, 'Italianno', cursive);
+  font-size: 2.35rem;
+  color: #fff9f6;
+  text-shadow: 1px 2px 8px rgba(0, 0, 0, 0.65);
+  margin-top: 10px;
+  cursor: pointer;
+  letter-spacing: 0.02em;
+  animation: pulseHint 2.2s ease-in-out infinite;
+}
+
+/* STATE 2: Open Envelope + Ditiban Kertas Surat Asli */
+.letter-opened-view {
+  display: none;
+  width: 100%;
   align-items: center;
-  gap: 6px;
-  transition: transform 0.2s ease, opacity 0.3s ease;
-  animation: pulseHint 2s infinite ease-in-out;
+  justify-content: center;
 }
 
-.click-to-read-pill:hover {
-  transform: scale(1.06);
+.letter-opened-view.active {
+  display: flex;
+  animation: stopMotionPop 0.55s steps(5, end) backwards;
 }
 
-.letter-sheet-container.pulled .click-to-read-pill {
-  opacity: 0;
-  pointer-events: none;
-}
-
-.letter-paper {
+.open-envelope-wrapper {
   position: relative;
   width: 100%;
-  background: #fcf9f2 url('assets/backgrounds/white-paper.webp');
-  background-size: cover;
-  border-radius: 8px;
-  padding: 24px 20px 30px;
-  box-shadow: 0 14px 38px rgba(0, 0, 0, 0.45);
-  color: #2b221d;
-  height: 60vh;
-  max-height: 480px;
+  max-width: 390px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.open-envelope-base-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 14px 28px rgba(0, 0, 0, 0.42));
+  z-index: 2;
+}
+
+/* Kertas Surat Asli Menindih / Menutupi Kertas di Dalam Open Envelope */
+.letter-paper-overlay {
+  position: absolute;
+  top: 13%;
+  left: 50%;
+  transform: translateX(-50%) rotate(-1.5deg);
+  width: 78%;
+  max-width: 300px;
+  aspect-ratio: 420 / 540;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
-  box-sizing: border-box;
+  animation: stopMotionFromBottom 0.55s steps(5, end) 0.12s backwards;
+}
+
+.letter-paper-bg-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  z-index: 1;
+  pointer-events: none;
+  filter: drop-shadow(0 10px 24px rgba(0, 0, 0, 0.35));
 }
 
 .letter-stamp-heart {
   position: absolute;
-  top: 12px;
-  right: 14px;
-  width: 44px;
-  height: 44px;
+  top: 7%;
+  right: 9%;
+  width: 36px;
+  height: 36px;
   opacity: 0.85;
   pointer-events: none;
+  z-index: 4;
 }
 
 .letter-stamp-heart img {
@@ -434,114 +563,56 @@
   height: auto;
 }
 
-.letter-scroll-area {
+/* Konten Teks Mengikuti Ukuran Kertas (Pas, Tidak Meluber, Animasi Menulis) */
+.letter-written-content {
+  position: relative;
+  z-index: 5;
   width: 100%;
   height: 100%;
-  overflow-y: auto;
-  padding-right: 6px;
-  -webkit-overflow-scrolling: touch;
-}
-
-.letter-scroll-area::-webkit-scrollbar {
-  width: 4px;
-}
-.letter-scroll-area::-webkit-scrollbar-thumb {
-  background: rgba(139, 24, 32, 0.3);
-  border-radius: 4px;
+  padding: 14% 12% 12%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #2b221d;
+  overflow: hidden;
 }
 
 .letter-salutation {
   font-family: var(--font-handwriting, 'Caveat', cursive);
-  font-size: 2.1rem;
+  font-size: 1.55rem;
   color: #8b1820;
-  margin-bottom: 12px;
-  line-height: 1;
-}
-
-.letter-lead {
-  font-size: 0.92rem;
-  line-height: 1.55;
-  font-weight: 600;
-  color: #1a1a1a;
-  margin-bottom: 14px;
+  margin: 0 0 6px;
+  line-height: 1.05;
+  min-height: 1.1em;
 }
 
 .letter-para {
-  font-size: 0.85rem;
-  line-height: 1.65;
+  font-size: 0.74rem;
+  line-height: 1.48;
   color: #3d302a;
-  margin-bottom: 12px;
+  margin: 0 0 8px;
 }
 
 .letter-closing {
-  font-size: 0.88rem;
-  line-height: 1.6;
-  font-weight: 600;
+  font-size: 0.76rem;
+  line-height: 1.4;
+  font-weight: 700;
   color: #8b1820;
-  margin-top: 18px;
-  margin-bottom: 14px;
+  margin: 4px 0 6px;
 }
 
 .letter-signature {
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  margin-top: 10px;
-}
-
-.sig-with {
-  font-family: var(--font-cursive, 'Italianno', cursive);
-  font-size: 1.8rem;
-  color: #554433;
+  justify-content: flex-end;
+  margin-top: auto;
 }
 
 .sig-name {
   font-family: var(--font-handwriting, 'Caveat', cursive);
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 700;
   color: #8b1820;
-  margin-top: -6px;
-}
-
-.letter-holding-hands {
-  position: absolute;
-  bottom: -40px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 108%;
-  pointer-events: none;
-  z-index: 28;
-  opacity: 0;
-  transition: opacity 0.6s ease 0.3s;
-}
-
-.letter-holding-hands .hands-img {
-  width: 100%;
-  height: auto;
-  display: block;
-  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.4));
-}
-
-.letter-sheet-container.pulled .letter-holding-hands {
-  opacity: 1;
-}
-
-.letter-envelope-pocket {
-  position: absolute;
-  bottom: -15px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 98%;
-  max-width: 380px;
-  z-index: 10;
-  pointer-events: none;
-}
-
-.envelope-pocket-img {
-  width: 100%;
-  height: auto;
-  display: block;
-  filter: drop-shadow(0 -4px 18px rgba(0, 0, 0, 0.35));
 }
 
 /* ==========================================================================
@@ -1084,13 +1155,16 @@
     width: 94px;
   }
   .gift-photobooth .gift-pure-img {
-    width: 90px;
+    width: 104px;
   }
   .gift-bouquet .gift-pure-img {
     width: 80px;
   }
   .letter-salutation {
-    font-size: 1.8rem;
+    font-size: 1.35rem;
+  }
+  .letter-para, .letter-closing {
+    font-size: 0.68rem;
   }
   .tag-question {
     font-size: 1.48rem;

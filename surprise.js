@@ -6,114 +6,63 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   // ------------------------------------------------------------------------
-  // 1. INISIALISASI ANIME.JS: STOP-MOTION ENTRANCE (PATAH-PATAH) & DONGENG
+  // 1. INISIALISASI ANIMASI IDLE DONGENG (SETELAH STOP-MOTION ENTRANCE CSS)
   // ------------------------------------------------------------------------
   if (typeof anime !== 'undefined') {
 
-    // Animasi Masuk Halaman Surprise: Stop-motion "patah-patah" (steps) dari kiri & kanan
-    const entranceTl = anime.timeline({
-      easing: 'steps(6)',
-      duration: 650
-    });
-
-    entranceTl
-      .add({
-        targets: '.scene-flower-tl',
-        translateX: [-120, 0],
-        opacity: [0, 1]
-      }, 0)
-      .add({
-        targets: ['.corner-paper-tr', '.scene-flower-br'],
-        translateX: [120, 0],
-        opacity: [0, 1]
-      }, 60)
-      .add({
-        targets: '.fairytale-bird-left',
-        translateX: [-140, 0],
-        opacity: [0, 1]
-      }, 120)
-      .add({
-        targets: '.fairytale-bird-right',
-        translateX: [140, 0],
-        opacity: [0, 1]
-      }, 120)
-      .add({
-        targets: '.menu-title',
-        translateY: [-35, 0],
-        opacity: [0, 1],
-        easing: 'steps(5)',
-        duration: 450
-      }, 160)
-      .add({
-        targets: '.gift-envelope',
-        translateX: [-110, 0],
-        opacity: [0, 1]
-      }, 220)
-      .add({
-        targets: '.gift-bouquet',
-        translateX: [110, 0],
-        opacity: [0, 1]
-      }, 220)
-      .add({
-        targets: '.gift-photobooth',
-        translateY: [60, 0],
-        scale: [0.7, 1],
-        opacity: [0, 1],
-        easing: 'steps(5)'
-      }, 260);
-    
-    // Animasi Goyang Kanan-Kiri Kado (Pendulum Fairytale Sway) setelah entrance
+    // Animasi Goyang Kanan-Kiri pada Gambar Kado (tanpa mengganggu wrapper entrance)
     anime({
-      targets: '.fairytale-gift-item',
+      targets: '.gift-asset-wrap',
       rotate: function(el, i) {
-        return i % 2 === 0 ? [-5, 5] : [5, -5];
+        return i % 2 === 0 ? [-4, 4] : [4, -4];
       },
       translateX: function(el, i) {
-        return i % 2 === 0 ? [-4, 4] : [4, -4];
+        return i % 2 === 0 ? [-3, 3] : [3, -3];
       },
       direction: 'alternate',
       loop: true,
       easing: 'easeInOutSine',
       delay: function(el, i) {
-        return 850 + i * 250;
+        return 1150 + i * 250;
       },
       duration: function(el, i) {
         return 2800 + i * 400;
       }
     });
 
-    // Animasi Dua Burung Melayang Halus di Langit (Kanan-Atas & Kiri-Bawah)
+    // Animasi Dua Burung Melayang Halus pada img-nya (agar tidak bentrok dengan entrance wrapper)
     anime({
-      targets: '.fairytale-bird-right',
-      translateY: [-10, 10],
-      translateX: [-5, 5],
+      targets: '.fairytale-bird-right .bird-img',
+      translateY: [-8, 8],
+      translateX: [-4, 4],
       rotate: [-3, 3],
       direction: 'alternate',
       loop: true,
       easing: 'easeInOutQuad',
-      delay: 750,
+      delay: 1000,
       duration: 3800
     });
 
     anime({
-      targets: '.fairytale-bird-left',
-      translateY: [10, -10],
-      translateX: [5, -5],
+      targets: '.fairytale-bird-left .bird-img',
+      translateY: [8, -8],
+      translateX: [4, -4],
       rotate: [3, -3],
       direction: 'alternate',
       loop: true,
       easing: 'easeInOutQuad',
-      delay: 750,
+      delay: 1000,
       duration: 4200
     });
 
     // Animasi Pernapasan Awan Halus (Cloud Breathing)
     anime({
       targets: '.fairytale-clouds',
-      scale: [1, 1.025],
+      scale: [1, 1.02],
       direction: 'alternate',
       loop: true,
       easing: 'easeInOutSine',
+      delay: 750,
       duration: 6000
     });
 
@@ -325,52 +274,69 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ------------------------------------------------------------------------
-  // 5. INTERAKSI SURAT CINTA (TARIK SURAT DENGAN ANIME.JS)
+  // 5. INTERAKSI SURAT CINTA (ENVELOPE -> OPEN ENVELOPE + TYPEWRITER KIRI KE KANAN)
   // ------------------------------------------------------------------------
-  const letterSheetContainer = document.getElementById('letterSheetContainer');
-  const clickToReadPill = document.getElementById('clickToReadPill');
+  const letterClosedView = document.getElementById('letterClosedView');
+  const letterOpenedView = document.getElementById('letterOpenedView');
+  const btnOpenClosedEnvelope = document.getElementById('btnOpenClosedEnvelope');
+  const letterOpenCursive = document.getElementById('letterOpenCursive');
+  const letterWrittenContent = document.getElementById('letterWrittenContent');
+  let typewriterTimers = [];
+
+  function clearTypewriter() {
+    typewriterTimers.forEach(t => clearTimeout(t));
+    typewriterTimers = [];
+  }
+
+  function startLetterTypewriter() {
+    if (!letterWrittenContent) return;
+    clearTypewriter();
+
+    const textTargets = Array.from(letterWrittenContent.querySelectorAll('[data-type]'));
+    textTargets.forEach(el => {
+      el.textContent = '';
+    });
+
+    let currentDelay = 500; // Mulai menulis setelah animasi stop-motion kertas selesai
+    const charInterval = 28; // Kecepatan ketik kiri ke kanan per huruf (ms)
+
+    textTargets.forEach(el => {
+      const fullText = el.getAttribute('data-type') || '';
+      for (let i = 0; i < fullText.length; i++) {
+        const char = fullText[i];
+        const timerId = setTimeout(() => {
+          el.textContent += char;
+        }, currentDelay);
+        typewriterTimers.push(timerId);
+        currentDelay += charInterval;
+      }
+      currentDelay += 160; // Jeda tipis antar paragraf
+    });
+  }
 
   function openLetter() {
-    if (!letterSheetContainer) return;
-    letterSheetContainer.classList.add('pulled');
-
-    if (typeof anime !== 'undefined') {
-      anime({
-        targets: '#letterSheetContainer',
-        translateY: '-80px',
-        easing: 'easeOutCubic',
-        duration: 900
-      });
-    }
+    if (letterClosedView) letterClosedView.classList.remove('active');
+    if (letterOpenedView) letterOpenedView.classList.add('active');
+    startLetterTypewriter();
   }
 
   function resetLetterState() {
-    if (!letterSheetContainer) return;
-    letterSheetContainer.classList.remove('pulled');
-
-    if (typeof anime !== 'undefined') {
-      anime({
-        targets: '#letterSheetContainer',
-        translateY: '120px',
-        duration: 400,
-        easing: 'easeOutQuad'
+    clearTypewriter();
+    if (letterOpenedView) letterOpenedView.classList.remove('active');
+    if (letterClosedView) letterClosedView.classList.add('active');
+    if (letterWrittenContent) {
+      letterWrittenContent.querySelectorAll('[data-type]').forEach(el => {
+        el.textContent = '';
       });
     }
   }
 
-  if (clickToReadPill) {
-    clickToReadPill.addEventListener('click', (e) => {
-      e.stopPropagation();
-      openLetter();
-    });
+  if (btnOpenClosedEnvelope) {
+    btnOpenClosedEnvelope.addEventListener('click', openLetter);
   }
 
-  if (letterSheetContainer) {
-    letterSheetContainer.addEventListener('click', () => {
-      if (!letterSheetContainer.classList.contains('pulled')) {
-        openLetter();
-      }
-    });
+  if (letterOpenCursive) {
+    letterOpenCursive.addEventListener('click', openLetter);
   }
 
   // ------------------------------------------------------------------------

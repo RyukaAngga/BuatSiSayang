@@ -100,7 +100,7 @@ html, body {
   animation: entrancePop 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.1s backwards;
 }
 
-/* Koran Kanan Atas: newspaper-2.png sesuai instruksi */
+/* Koran Kanan Atas: newspaper-2.webp sesuai instruksi */
 .sticker-newspaper-tr {
   top: -2%;
   right: -5%;
@@ -363,7 +363,7 @@ html, body {
   filter: drop-shadow(0 14px 34px rgba(0, 0, 0, 0.42));
 }
 
-/* ALAS KERTAS ASLI SECTION 2: paper-sec2.png (UKURAN TERKUNCI ASLI, NAIK KE ATAS HAMPIR SEJAJAR STRIP FILM) */
+/* ALAS KERTAS ASLI SECTION 2: paper-sec2.webp (UKURAN TERKUNCI ASLI, NAIK KE ATAS HAMPIR SEJAJAR STRIP FILM) */
 .section-2-paper-sec2 {
   position: absolute;
   top: 9%;
@@ -621,7 +621,7 @@ html, body {
   width: 26px;
   height: 26px;
   border-radius: 3px;
-  background: #333 url('assets/stickers/vinyl.png') center/cover;
+  background: #333 url('assets/stickers/vinyl.webp') center/cover;
 }
 
 .track-info .track-title {
@@ -654,7 +654,7 @@ html, body {
 }
 
 /* ==========================================================================
-   SECTION 3: CALENDAR & VIDEO (Dengan paper-3.png & Pushpin Besar)
+   SECTION 3: CALENDAR & VIDEO (Dengan paper-3.webp & Pushpin Besar)
    ========================================================================== */
 .memory-section {
   position: relative;
@@ -672,7 +672,7 @@ html, body {
   overflow: hidden;
 }
 
-/* Kertas Sobek di Pojok Kiri Atas Section 3: paper-sec3.png (Static, Tanpa Rotasi, Menempel Rapi di Sudut) */
+/* Kertas Sobek di Pojok Kiri Atas Section 3: paper-sec3.webp (Static, Tanpa Rotasi, Menempel Rapi di Sudut) */
 .sticker-paper-sec3 {
   position: absolute;
   top: 0;
@@ -763,7 +763,7 @@ html, body {
   filter: drop-shadow(2px 8px 12px rgba(0, 0, 0, 0.45));
 }
 
-/* CARD KALENDER BERBASIS paper-3.png ASLI */
+/* CARD KALENDER BERBASIS paper-3.webp ASLI */
 .calendar-card-paper3 {
   position: relative;
   width: 100%;
@@ -779,7 +779,7 @@ html, body {
   filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.45));
 }
 
-/* Konten Kalender yang Menempel di Atas paper-3.png */
+/* Konten Kalender yang Menempel di Atas paper-3.webp */
 .calendar-inner-content {
   position: absolute;
   inset: 0;

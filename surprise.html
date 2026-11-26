@@ -22,20 +22,21 @@
       </svg>
     </button>
 
-    <!-- LAPISAN BACKGROUND DONGENG: PINGGIRAN AWAN & BURUNG -->
+    <!-- LAPISAN BACKGROUND DONGENG: PINGGIRAN AWAN & 2 BURUNG -->
     <div class="fairytale-bg-layer" aria-hidden="true">
       <div class="fairytale-clouds">
         <img src="assets/stickers/pinggiran-awan.webp" alt="" class="clouds-img">
       </div>
-      <div class="fairytale-bird">
+      <!-- Dua Burung Ukuran Sedang di Posisi Tengah-Kanan-Atas dan Kiri-Tengah-Bawah -->
+      <div class="fairytale-bird fairytale-bird-right">
         <img src="assets/stickers/burung.webp" alt="" class="bird-img">
       </div>
-      <!-- Sobekan Kertas di Sudut-Sudut Scrapbook -->
+      <div class="fairytale-bird fairytale-bird-left">
+        <img src="assets/stickers/burung.webp" alt="" class="bird-img">
+      </div>
+      <!-- Sobekan Kertas di Sudut Kanan Atas (Tegak / Tanpa Rotasi) -->
       <div class="corner-paper corner-paper-tr">
         <img src="assets/stickers/newspaper-2.webp" alt="">
-      </div>
-      <div class="corner-paper corner-paper-bl">
-        <img src="assets/stickers/paper-sec3.webp" alt="">
       </div>
     </div>
 
@@ -58,11 +59,8 @@
         <span>Beranda</span>
       </a>
 
-      <!-- Header Menu -->
+      <!-- Header Menu (Minimalis & Bersih) -->
       <div class="menu-header">
-        <div class="badge-pill-soft">
-          <span>Khusus Buat Kamu</span>
-        </div>
         <h1 class="menu-title">Pilih ya sayang</h1>
         <p class="menu-subtitle">Ada 3 kado kecil penuh cinta, sentuh salah satu dulu ya</p>
       </div>
@@ -70,25 +68,25 @@
       <!-- 3 PILIHAN KADO POLOS (TANPA CARD, HANYA ASET DENGAN ANIMASI GOYANG KANAN-KIRI) -->
       <div class="fairytale-gifts-container">
         
-        <!-- Opsi 1: Surat Cinta -->
+        <!-- Opsi 1: Surat Cinta (Menggunakan envelope.webp biasa) -->
         <button type="button" class="fairytale-gift-item gift-envelope" id="btnOpenLetter" aria-label="Buka Surat Cinta">
           <div class="gift-asset-wrap">
-            <img src="assets/stickers/envelope-2.webp" alt="Surat Cinta" class="gift-pure-img">
+            <img src="assets/stickers/envelope.webp" alt="Surat Cinta" class="gift-pure-img">
           </div>
           <span class="gift-pure-title">Surat Cinta</span>
           <span class="gift-pure-sub">Dear My Love</span>
         </button>
 
-        <!-- Opsi 2: Photobooth Kenangan -->
+        <!-- Opsi 2: Photobooth Kenangan (Menggunakan photobooth.webp) -->
         <button type="button" class="fairytale-gift-item gift-photobooth" id="btnOpenPhotobooth" aria-label="Lihat Photobooth">
           <div class="gift-asset-wrap">
-            <img src="assets/stickers/filmstrip.webp" alt="Photobooth Kenangan" class="gift-pure-img">
+            <img src="assets/stickers/photobooth.webp" alt="Photobooth Kenangan" class="gift-pure-img">
           </div>
           <span class="gift-pure-title">Photobooth</span>
           <span class="gift-pure-sub">Our Moments</span>
         </button>
 
-        <!-- Opsi 3: Buket Hadiah & Kuis -->
+        <!-- Opsi 3: Buket Hadiah & Kuis (Buket Biru dipertahankan) -->
         <button type="button" class="fairytale-gift-item gift-bouquet" id="btnOpenQuiz" aria-label="Buka Kado Bunga">
           <div class="gift-asset-wrap">
             <img src="assets/stickers/buketbiru.webp" alt="Buket Hadiah" class="gift-pure-img">
@@ -217,9 +215,9 @@
           <img src="assets/stickers/ribbon.webp" alt="">
         </div>
 
-        <!-- Strip Film Kenangan (Placeholder Bersama) -->
+        <!-- Strip Photobooth Kenangan Asli -->
         <div class="photobooth-strip-wrap">
-          <img src="assets/stickers/filmstrip.webp" alt="Galeri Kenangan Kita" class="photobooth-strip-img">
+          <img src="assets/stickers/photobooth.webp" alt="Galeri Kenangan Kita" class="photobooth-strip-img">
         </div>
 
         <!-- Bunga Pink di Pojok Bawah -->

@@ -27,16 +27,27 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // Animasi Burung Melayang Halus di Langit
+    // Animasi Dua Burung Melayang Halus di Langit (Kanan-Atas & Kiri-Bawah)
     anime({
-      targets: '.fairytale-bird',
+      targets: '.fairytale-bird-right',
       translateY: [-10, 10],
-      translateX: [-6, 6],
+      translateX: [-5, 5],
       rotate: [-3, 3],
       direction: 'alternate',
       loop: true,
       easing: 'easeInOutQuad',
       duration: 3800
+    });
+
+    anime({
+      targets: '.fairytale-bird-left',
+      translateY: [10, -10],
+      translateX: [5, -5],
+      rotate: [3, -3],
+      direction: 'alternate',
+      loop: true,
+      easing: 'easeInOutQuad',
+      duration: 4200
     });
 
     // Animasi Pernapasan Awan Halus (Cloud Breathing)

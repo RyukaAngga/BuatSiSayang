@@ -1,0 +1,1043 @@
+/* ==========================================================================
+   SURPRISE.CSS — Scrapbook Multi-Scene Interactive Styles
+   ========================================================================== */
+
+/* Basis Body & Container */
+.surprise-body {
+  background-color: var(--color-bg-dark, #120204);
+  min-height: 100vh;
+  min-height: 100dvh;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-sans, 'Plus Jakarta Sans', sans-serif);
+  color: #fffdfa;
+  overflow-x: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.surprise-container {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  min-height: 100vh;
+  min-height: 100dvh;
+  margin: 0 auto;
+  background-image: url('assets/backgrounds/red-paper.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.7);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Floating Audio Toggle Button */
+.music-toggle-float {
+  position: fixed;
+  bottom: 22px;
+  right: 22px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.88);
+  border: 2px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 100;
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.music-toggle-float:hover {
+  transform: scale(1.08);
+  background: #ffffff;
+}
+
+.music-toggle-float.playing {
+  animation: pulseHint 2s infinite ease-in-out;
+}
+
+.music-icon {
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+/* Navigasi Back Button (Pojok Kiri Atas) */
+.top-nav-back {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.88);
+  color: #1a1a1a;
+  border: none;
+  outline: none;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.28);
+  cursor: pointer;
+  z-index: 40;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.top-nav-back:hover {
+  transform: scale(1.04);
+  background: #ffffff;
+}
+
+.nav-back-arrow {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+/* Scene Wrapper (State Management) */
+.surprise-scene {
+  display: none;
+  opacity: 0;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: 64px 16px 36px;
+  box-sizing: border-box;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(12px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.surprise-scene.active {
+  display: flex;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stiker Dekorasi di Sudut */
+.scene-flower-tl {
+  top: 2%;
+  left: -4%;
+  width: 32%;
+  max-width: 130px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.scene-flower-br {
+  bottom: 2%;
+  right: -5%;
+  width: 36%;
+  max-width: 150px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   SCENE 1: MENU PILIHAN HADIAH ("PILIH YA SAYANG")
+   ========================================================================== */
+.menu-header {
+  text-align: center;
+  margin-bottom: 22px;
+  z-index: 5;
+}
+
+.badge-pill-soft {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.92);
+  color: #8b1820;
+  padding: 4px 14px;
+  border-radius: 9999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
+  margin-bottom: 8px;
+}
+
+.menu-title {
+  font-family: var(--font-handwriting, 'Caveat', cursive);
+  font-size: 2.8rem;
+  color: #fff9f6;
+  text-shadow: 2px 3px 8px rgba(0, 0, 0, 0.45);
+  line-height: 1.1;
+  margin: 4px 0 6px;
+}
+
+.menu-subtitle {
+  font-size: 0.85rem;
+  color: #faedd9;
+  opacity: 0.92;
+  max-width: 280px;
+  margin: 0 auto;
+  line-height: 1.4;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.35);
+}
+
+/* Grid 3 Kartu Pilihan Hadiah */
+.gift-options-grid {
+  width: 100%;
+  max-width: 380px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  z-index: 10;
+}
+
+.gift-card {
+  position: relative;
+  width: 100%;
+  background: #fffdfa;
+  border: none;
+  border-radius: 14px;
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+  text-align: left;
+  transition: transform 0.28s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.28s ease;
+}
+
+.gift-card:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
+}
+
+.gift-card:active {
+  transform: scale(0.97);
+}
+
+/* Pushpin di Pojok Kiri Kartu */
+.gift-card-pin {
+  position: absolute;
+  top: -12px;
+  left: 12px;
+  width: 38px;
+  height: 38px;
+  pointer-events: none;
+  z-index: 12;
+}
+
+.gift-card-pin img {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.3));
+}
+
+.gift-card-img-wrap {
+  width: 68px;
+  height: 68px;
+  border-radius: 10px;
+  background: #fdf5f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.08);
+}
+
+.gift-card-img-wrap img {
+  width: 90%;
+  height: 90%;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.gift-card:hover .gift-card-img-wrap img {
+  transform: scale(1.1);
+}
+
+.gift-card-label {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.gift-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  line-height: 1.2;
+}
+
+.gift-tag {
+  font-family: var(--font-handwriting, 'Caveat', cursive);
+  font-size: 1.1rem;
+  color: #8b1820;
+  font-weight: 600;
+}
+
+.menu-bottom-hint {
+  font-family: var(--font-typewriter, 'Courier Prime', monospace);
+  font-size: 0.8rem;
+  color: #faedd9;
+  opacity: 0.88;
+  margin-top: 24px;
+  text-align: center;
+  animation: pulseHint 2.4s infinite ease-in-out;
+}
+
+/* ==========================================================================
+   SCENE 2A: SURAT CINTA INTERAKTIF ("DEAR MY LOVE")
+   ========================================================================== */
+#sceneLetter {
+  position: relative;
+  background-image: url('assets/backgrounds/gingham-red.webp');
+  background-repeat: repeat;
+  background-size: 260px auto;
+  padding: 60px 14px 20px;
+  overflow: hidden;
+}
+
+.letter-stage {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  height: 82vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding-bottom: 20px;
+}
+
+/* Wadah Lembar Surat */
+.letter-sheet-container {
+  position: relative;
+  width: 92%;
+  max-width: 360px;
+  z-index: 5;
+  transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1), z-index 0.1s ease;
+  transform: translateY(120px); /* Awalnya menyembul di dalam amplop */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Saat Surat Ditarik / Terbuka */
+.letter-sheet-container.pulled {
+  transform: translateY(-80px);
+  z-index: 25;
+}
+
+/* Tombol Klik to Read */
+.click-to-read-pill {
+  background: #ffffff;
+  color: #8b1820;
+  padding: 6px 18px;
+  border-radius: 9999px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+  margin-bottom: -14px;
+  z-index: 30;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.3s ease;
+  animation: pulseHint 2s infinite ease-in-out;
+}
+
+.click-to-read-pill:hover {
+  transform: scale(1.06);
+}
+
+.letter-sheet-container.pulled .click-to-read-pill {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Lembaran Kertas Surat */
+.letter-paper {
+  position: relative;
+  width: 100%;
+  background: #fcf9f2 url('assets/backgrounds/white-paper.webp');
+  background-size: cover;
+  border-radius: 8px;
+  padding: 24px 20px 30px;
+  box-shadow: 0 14px 38px rgba(0, 0, 0, 0.45);
+  color: #2b221d;
+  height: 60vh;
+  max-height: 480px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.letter-stamp-heart {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  width: 44px;
+  height: 44px;
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+.letter-stamp-heart img {
+  width: 100%;
+  height: auto;
+}
+
+.letter-scroll-area {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  padding-right: 6px;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Scrollbar halus untuk surat */
+.letter-scroll-area::-webkit-scrollbar {
+  width: 4px;
+}
+.letter-scroll-area::-webkit-scrollbar-thumb {
+  background: rgba(139, 24, 32, 0.3);
+  border-radius: 4px;
+}
+
+.letter-salutation {
+  font-family: var(--font-handwriting, 'Caveat', cursive);
+  font-size: 2.1rem;
+  color: #8b1820;
+  margin-bottom: 12px;
+  line-height: 1;
+}
+
+.letter-lead {
+  font-size: 0.92rem;
+  line-height: 1.55;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 14px;
+}
+
+.letter-para {
+  font-size: 0.85rem;
+  line-height: 1.65;
+  color: #3d302a;
+  margin-bottom: 12px;
+}
+
+.letter-closing {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  font-weight: 600;
+  color: #8b1820;
+  margin-top: 18px;
+  margin-bottom: 14px;
+}
+
+.letter-signature {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-top: 10px;
+}
+
+.sig-with {
+  font-family: var(--font-cursive, 'Italianno', cursive);
+  font-size: 1.8rem;
+  color: #554433;
+}
+
+.sig-name {
+  font-family: var(--font-handwriting, 'Caveat', cursive);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #8b1820;
+  margin-top: -6px;
+}
+
+/* Dua Tangan Halftone Memegang Kertas Surat */
+.letter-holding-hands {
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 108%;
+  pointer-events: none;
+  z-index: 28;
+  opacity: 0;
+  transition: opacity 0.6s ease 0.3s;
+}
+
+.letter-holding-hands .hands-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.4));
+}
+
+.letter-sheet-container.pulled .letter-holding-hands {
+  opacity: 1;
+}
+
+/* Kantong Amplop Bagian Depan */
+.letter-envelope-pocket {
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 98%;
+  max-width: 380px;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.envelope-pocket-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 -4px 18px rgba(0, 0, 0, 0.35));
+}
+
+/* ==========================================================================
+   SCENE 2B: PHOTOBOOTH KENANGAN ("PIECES OF OUR STORY")
+   ========================================================================== */
+.photobooth-header {
+  text-align: center;
+  margin-bottom: 16px;
+  z-index: 5;
+}
+
+.photobooth-title {
+  font-family: var(--font-handwriting, 'Caveat', cursive);
+  font-size: 2.6rem;
+  color: #fffdfa;
+  text-shadow: 2px 3px 6px rgba(0,0,0,0.4);
+  line-height: 1.1;
+  margin: 6px 0 4px;
+}
+
+.photobooth-subtitle {
+  font-size: 0.82rem;
+  color: #faedd9;
+  opacity: 0.9;
+  max-width: 290px;
+  margin: 0 auto;
+}
+
+.photobooth-board {
+  position: relative;
+  width: 94%;
+  max-width: 380px;
+  background: #fdfaf6;
+  border-radius: 12px;
+  padding: 24px 16px 20px;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.45);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: rotate(-1.5deg);
+  z-index: 10;
+}
+
+.photobooth-pushpin {
+  position: absolute;
+  top: -24px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 58px;
+  height: 58px;
+  z-index: 25;
+  pointer-events: none;
+}
+
+.photobooth-pushpin img {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(2px 6px 8px rgba(0,0,0,0.35));
+}
+
+.photobooth-ribbon {
+  position: absolute;
+  top: -26px;
+  right: -24px;
+  width: 110px;
+  height: 110px;
+  z-index: 22;
+  pointer-events: none;
+}
+
+.photobooth-ribbon img {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(3px 8px 12px rgba(0,0,0,0.4));
+}
+
+.photobooth-strip-wrap {
+  width: 100%;
+  max-width: 220px;
+  margin: 6px 0 14px;
+  transform: rotate(1deg);
+}
+
+.photobooth-strip-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 6px 16px rgba(0,0,0,0.3));
+}
+
+.photobooth-flower {
+  position: absolute;
+  bottom: -20px;
+  left: -20px;
+  width: 90px;
+  height: 90px;
+  z-index: 22;
+  pointer-events: none;
+}
+
+.photobooth-flower img {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(2px 6px 8px rgba(0,0,0,0.3));
+}
+
+.photobooth-caption-box {
+  border-top: 1px dashed rgba(139, 24, 32, 0.3);
+  padding-top: 10px;
+  text-align: center;
+  width: 100%;
+}
+
+.handwritten-caption {
+  font-family: var(--font-handwriting, 'Caveat', cursive);
+  font-size: 1.25rem;
+  color: #8b1820;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+/* ==========================================================================
+   SCENE 2C: KUIS HADIAH INTERAKTIF ("KAMU SUKA NGGA?")
+   ========================================================================== */
+.quiz-step {
+  display: none;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.quiz-step.active {
+  display: flex;
+}
+
+/* STEP 1: Tag Kartu Gantung */
+.gift-tag-card {
+  position: relative;
+  width: 92%;
+  max-width: 360px;
+  background: #fdfaf3;
+  border-radius: 16px;
+  padding: 38px 22px 28px;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.45);
+  text-align: center;
+  color: #1a1a1a;
+  transform: rotate(-1.5deg);
+  z-index: 10;
+}
+
+.tag-string-pin {
+  position: absolute;
+  top: -26px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 60px;
+  z-index: 20;
+  pointer-events: none;
+}
+
+.tag-string-pin img {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(2px 6px 10px rgba(0, 0, 0, 0.35));
+}
+
+.tag-badge {
+  display: inline-block;
+  background: #faeedb;
+  color: #8b1820;
+  padding: 4px 14px;
+  border-radius: 9999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.tag-question {
+  font-family: var(--font-handwriting, 'Caveat', cursive);
+  font-size: 2.1rem;
+  color: #8b1820;
+  line-height: 1.25;
+  margin-bottom: 10px;
+}
+
+.tag-hint {
+  font-size: 0.85rem;
+  color: #554433;
+  margin-bottom: 24px;
+}
+
+.tag-buttons-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.tag-btn {
+  width: 100%;
+  padding: 13px 18px;
+  border-radius: 9999px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: transform 0.22s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.22s ease;
+}
+
+.tag-btn-yes {
+  background: #8b1820;
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(139, 24, 32, 0.35);
+}
+
+.tag-btn-yes:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 18px rgba(139, 24, 32, 0.45);
+}
+
+.tag-btn-no {
+  background: #f0e6dc;
+  color: #554433;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
+}
+
+.tag-btn-no:hover {
+  transform: scale(1.02);
+  background: #e8dbcf;
+}
+
+.tag-btn:active {
+  transform: scale(0.96);
+}
+
+/* STEP 2: Salah Pencet (Respon Kucing Sedih) */
+.wrong-card {
+  width: 92%;
+  max-width: 360px;
+  background: #fffdfa;
+  border-radius: 16px;
+  padding: 24px 20px 26px;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.45);
+  text-align: center;
+  animation: shakeNotice 0.6s ease;
+  z-index: 10;
+}
+
+@keyframes shakeNotice {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-8px) rotate(-2deg); }
+  40%, 80% { transform: translateX(8px) rotate(2deg); }
+}
+
+.sad-cat-wrap {
+  width: 140px;
+  height: 140px;
+  margin: 0 auto 14px;
+}
+
+.sad-cat-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 6px 12px rgba(0,0,0,0.25));
+}
+
+.wrong-title {
+  font-family: var(--font-handwriting, 'Caveat', cursive);
+  font-size: 1.85rem;
+  color: #8b1820;
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+
+.wrong-desc {
+  font-size: 0.88rem;
+  color: #3d302a;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.btn-retry-quiz {
+  background: #8b1820;
+  color: #fff;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 9999px;
+  font-weight: 700;
+  font-size: 0.92rem;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(139, 24, 32, 0.35);
+  transition: transform 0.2s ease;
+}
+
+.btn-retry-quiz:hover {
+  transform: scale(1.04);
+}
+
+/* STEP 3: Selebrasi Hadiah & Pop-up WhatsApp */
+.celebration-card {
+  position: relative;
+  width: 94%;
+  max-width: 380px;
+  background: #fdfaf6;
+  border-radius: 16px;
+  padding: 24px 16px 20px;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10;
+}
+
+.celebration-ribbon {
+  position: absolute;
+  top: -28px;
+  right: -24px;
+  width: 115px;
+  height: 115px;
+  z-index: 25;
+  pointer-events: none;
+}
+
+.celebration-ribbon img {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(2px 8px 12px rgba(0,0,0,0.4));
+}
+
+.celebration-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.celebration-speech-bubble {
+  background: #ffffff;
+  color: #8b1820;
+  padding: 6px 18px;
+  border-radius: 9999px;
+  font-weight: 700;
+  font-size: 0.88rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  margin-bottom: 12px;
+  animation: wobbleSlight 4s infinite ease-in-out;
+}
+
+.celebration-photo-frame {
+  position: relative;
+  width: 100%;
+  max-width: 250px;
+  aspect-ratio: 1/1;
+  background: #f5ebe6;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.15), 0 8px 20px rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.celebration-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.celebration-bouquet-overlay {
+  position: absolute;
+  bottom: -15px;
+  right: -15px;
+  width: 120px;
+  height: 120px;
+  pointer-events: none;
+}
+
+.celebration-bouquet-overlay .bouquet-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(2px 6px 10px rgba(0,0,0,0.35));
+}
+
+.celebration-text {
+  font-family: var(--font-handwriting, 'Caveat', cursive);
+  font-size: 1.55rem;
+  color: #8b1820;
+  font-weight: 700;
+  margin: 12px 0 16px;
+  text-align: center;
+}
+
+/* KARTU NOTIFIKASI WHATSAPP */
+.wa-notification-card {
+  width: 100%;
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 10px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-decoration: none;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  animation: slideUpBounce 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
+}
+
+.wa-notification-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(37, 211, 102, 0.3);
+}
+
+.wa-notification-card:active {
+  transform: scale(0.98);
+}
+
+@keyframes slideUpBounce {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.wa-notif-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.wa-app-badge {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.68rem;
+  color: #667781;
+  font-weight: 600;
+}
+
+.wa-icon-svg {
+  flex-shrink: 0;
+}
+
+.wa-tap-hint {
+  font-size: 0.65rem;
+  color: #25D366;
+  font-weight: 700;
+}
+
+.wa-notif-body {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.wa-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #ffebee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.wa-message-content {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.wa-sender {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #111b21;
+  line-height: 1.2;
+}
+
+.wa-text {
+  font-size: 0.78rem;
+  color: #3b4a54;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Floating Hearts Effect */
+.floating-hearts-container {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 30;
+}
+
+.floating-heart {
+  position: absolute;
+  font-size: 1.4rem;
+  animation: floatUpFade 2.4s ease-in forwards;
+}
+
+@keyframes floatUpFade {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(0.6);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-220px) scale(1.4) rotate(15deg);
+  }
+}
+
+/* ==========================================================================
+   RESPONSIVITAS MOBILE & ACCESSIBILITY
+   ========================================================================== */
+@media (max-width: 380px) {
+  .menu-title {
+    font-size: 2.3rem;
+  }
+  .gift-title {
+    font-size: 1rem;
+  }
+  .letter-salutation {
+    font-size: 1.8rem;
+  }
+  .tag-question {
+    font-size: 1.8rem;
+  }
+}

@@ -45,60 +45,62 @@
          ========================================================================= -->
     <section class="surprise-scene active" id="sceneMenu">
       
-      <!-- Dekorasi Stiker Bunga Tambahan -->
-      <div class="sticker scene-flower-tl flower-spin" aria-hidden="true">
+      <!-- Bunga Berputar di Pojok Kanan Atas Saja Sesuai Instruksi -->
+      <div class="sticker scene-flower-tr flower-spin" aria-hidden="true">
         <img src="assets/stickers/hibiscus.webp" alt="">
       </div>
-      <div class="sticker scene-flower-br flower-spin-reverse" aria-hidden="true">
+      <!-- Bunga Pojok Kanan Bawah Diam Saja (Tanpa Putaran) -->
+      <div class="sticker scene-flower-br" aria-hidden="true">
         <img src="assets/stickers/pink-flowers.webp" alt="">
       </div>
 
-      <!-- Tombol Kembali ke Halaman Utama -->
-      <a href="index.html" class="top-nav-back" aria-label="Kembali ke Beranda">
-        <span class="nav-back-arrow">←</span>
-        <span>Beranda</span>
+      <!-- Tombol Kembali ke Halaman Utama (Bulatan Ikon Simpel Tanpa Teks) -->
+      <a href="index.html" class="top-nav-back top-nav-circle" aria-label="Kembali ke Beranda" title="Kembali ke Beranda">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
       </a>
 
-      <!-- Header Menu (Minimalis & Bersih) -->
-      <div class="menu-header">
-        <h1 class="menu-title">Pilih ya sayang</h1>
-        <p class="menu-subtitle">Ada 3 kado kecil penuh cinta, sentuh salah satu dulu ya</p>
-      </div>
+      <!-- Konten Utama Menu (Lebih Rapat ke Atas Menghilangkan Gap Kosong) -->
+      <div class="menu-main-content">
+        <!-- Header Menu (Minimalis & Bersih) -->
+        <div class="menu-header">
+          <h1 class="menu-title">Pilih ya sayang</h1>
+          <p class="menu-subtitle">Ada 3 kado kecil penuh cinta, sentuh salah satu dulu ya</p>
+        </div>
 
-      <!-- 3 PILIHAN KADO POLOS (TANPA CARD, HANYA ASET DENGAN ANIMASI GOYANG KANAN-KIRI) -->
-      <div class="fairytale-gifts-container">
-        
-        <!-- Opsi 1: Surat Cinta (Menggunakan envelope.webp biasa) -->
-        <button type="button" class="fairytale-gift-item gift-envelope" id="btnOpenLetter" aria-label="Buka Surat Cinta">
-          <div class="gift-asset-wrap">
-            <img src="assets/stickers/envelope.webp" alt="Surat Cinta" class="gift-pure-img">
-          </div>
-          <span class="gift-pure-title">Surat Cinta</span>
-          <span class="gift-pure-sub">Dear My Love</span>
-        </button>
+        <!-- 3 PILIHAN KADO POLOS (TANPA CARD, LEBIH NAIK KE ATAS & PROPORSIONAL) -->
+        <div class="fairytale-gifts-container">
+          
+          <!-- Opsi 1: Surat Cinta (Menggunakan envelope.webp biasa) -->
+          <button type="button" class="fairytale-gift-item gift-envelope" id="btnOpenLetter" aria-label="Buka Surat Cinta">
+            <div class="gift-asset-wrap">
+              <img src="assets/stickers/envelope.webp" alt="Surat Cinta" class="gift-pure-img">
+            </div>
+            <span class="gift-pure-title">Surat Cinta</span>
+            <span class="gift-pure-sub">Dear My Love</span>
+          </button>
 
-        <!-- Opsi 2: Photobooth Kenangan (Menggunakan photobooth.webp) -->
-        <button type="button" class="fairytale-gift-item gift-photobooth" id="btnOpenPhotobooth" aria-label="Lihat Photobooth">
-          <div class="gift-asset-wrap">
-            <img src="assets/stickers/photobooth.webp" alt="Photobooth Kenangan" class="gift-pure-img">
-          </div>
-          <span class="gift-pure-title">Photobooth</span>
-          <span class="gift-pure-sub">Our Moments</span>
-        </button>
+          <!-- Opsi 2: Photobooth Kenangan (Ukuran Diperbesar Seimbang) -->
+          <button type="button" class="fairytale-gift-item gift-photobooth" id="btnOpenPhotobooth" aria-label="Lihat Photobooth">
+            <div class="gift-asset-wrap">
+              <img src="assets/stickers/photobooth.webp" alt="Photobooth Kenangan" class="gift-pure-img">
+            </div>
+            <span class="gift-pure-title">Photobooth</span>
+            <span class="gift-pure-sub">Our Moments</span>
+          </button>
 
-        <!-- Opsi 3: Buket Hadiah & Kuis (Buket Biru dipertahankan) -->
-        <button type="button" class="fairytale-gift-item gift-bouquet" id="btnOpenQuiz" aria-label="Buka Kado Bunga">
-          <div class="gift-asset-wrap">
-            <img src="assets/stickers/buketbiru.webp" alt="Buket Hadiah" class="gift-pure-img">
-          </div>
-          <span class="gift-pure-title">Buket Bunga</span>
-          <span class="gift-pure-sub">Special Gift</span>
-        </button>
+          <!-- Opsi 3: Buket Hadiah & Kuis (Buket Biru Dipertahankan) -->
+          <button type="button" class="fairytale-gift-item gift-bouquet" id="btnOpenQuiz" aria-label="Buka Kado Bunga">
+            <div class="gift-asset-wrap">
+              <img src="assets/stickers/buketbiru.webp" alt="Buket Hadiah" class="gift-pure-img">
+            </div>
+            <span class="gift-pure-title">Buket Bunga</span>
+            <span class="gift-pure-sub">Special Gift</span>
+          </button>
 
-      </div>
-
-      <div class="menu-bottom-hint">
-        <span>sentuh kado untuk membukanya</span>
+        </div>
       </div>
 
     </section>

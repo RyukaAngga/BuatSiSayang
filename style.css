@@ -673,6 +673,29 @@ html, body {
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+.memory-section img,
+.memory-section video {
+  -webkit-user-drag: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.calendar-wrapper,
+.calendar-card-paper3,
+.calendar-inner-content,
+.polaroid-wrapper,
+.polaroid-frame {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-drag: none;
 }
 
 /* Kertas Sobek di Pojok Kiri Atas Section 3: paper-sec3.webp (Static, Tanpa Rotasi, Menempel Rapi di Sudut) */

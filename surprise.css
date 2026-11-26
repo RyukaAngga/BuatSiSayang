@@ -165,8 +165,20 @@
   transition: transform 0.2s ease, background 0.2s ease;
 }
 
+/* Bulatan Ikon Simpel untuk Tombol Kembali */
+.top-nav-back.top-nav-circle {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.92);
+}
+
 .top-nav-back:hover {
-  transform: scale(1.04);
+  transform: scale(1.08);
   background: #ffffff;
 }
 
@@ -199,11 +211,11 @@
 }
 
 /* Stiker Dekorasi di Sudut */
-.scene-flower-tl {
-  top: 2%;
-  left: -4%;
+.scene-flower-tr {
+  top: 1.5%;
+  right: -3%;
   width: 32%;
-  max-width: 130px;
+  max-width: 125px;
   z-index: 2;
   pointer-events: none;
 }
@@ -220,9 +232,18 @@
 /* ==========================================================================
    SCENE 1: MENU PILIHAN HADIAH ("PILIH YA SAYANG")
    ========================================================================= */
+.menu-main-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: -65px; /* Naik lebih ke atas agar space tidak kosong melompong */
+  z-index: 10;
+}
+
 .menu-header {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 22px;
   z-index: 5;
 }
 
@@ -254,8 +275,8 @@
   flex-direction: row;
   justify-content: space-around;
   align-items: flex-end;
-  gap: 10px;
-  margin: 16px 0 28px;
+  gap: 12px;
+  margin: 10px 0 0;
   z-index: 10;
 }
 
@@ -295,7 +316,7 @@
 }
 
 .gift-photobooth .gift-pure-img {
-  width: 68px;
+  width: 102px;
   height: auto;
   filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.4));
 }
